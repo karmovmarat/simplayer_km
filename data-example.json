@@ -1,1066 +1,1232 @@
-[
-  {
-    "agents": {
-      "1": {
-        "name": "Tom",
-        "description": "Java Software Engineer",
-        "id": 1,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 1.1
-          },
-          {
-            "name": "C++",
-            "proficiency": 1.5
-          }
-        ],
-        "external_queue": [],
-        "accepted_queue": [
-          [
+{
+  "oc_dictionary": [
+    "wip",
+    "done",
+    "work load"
+  ],
+  "work_item_dictionary": [
+    "completeness",
+    "value"
+  ],
+  "frames": [
+    {
+      "organization_components": {
+        "1": {
+          "name": "Tom",
+          "description": "Java Software Engineer",
+          "id": 1,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 1.1
+            },
+            {
+              "name": "C++",
+              "proficiency": 1.5
+            }
+          ],
+          "accepted_queue": [
             201
-          ]
-        ],
-        "working_queue": [
-          [
+          ],
+          "working_queue": [
             202
+          ],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ]
-      },
-      "2": {
-        "name": "Mobile Team",
-        "description": "This is Mobile Team",
-        "id": 2,
-        "skills": [
-          {
-            "name": "C#",
-            "proficiency": 3
-          },
-          {
-            "name": "C",
-            "proficiency": 2
-          }
-        ],
-        "external_queue": [
-          [
+        },
+        "2": {
+          "name": "Mobile Team",
+          "description": "This is Mobile Team",
+          "id": 2,
+          "skills": [
+            {
+              "name": "C#",
+              "proficiency": 3
+            },
+            {
+              "name": "C",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [
             203
+          ],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
+        },
+        "3": {
+          "name": "Server Team",
+          "description": "This is Mobile Team",
+          "id": 3,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
+          ]
+        }
       },
-      "3": {
-        "name": "Server Team",
-        "description": "This is Mobile Team",
-        "id": 3,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 2
-          }
-        ],
-        "exeternal_queue": [
-          [
-            204
+      "work_items": {
+        "101": {
+          "id": "101",
+          "name": "Capability 1",
+          "type": "capability",
+          "description": "this is capability 1",
+          "size": [
+            20,
+            5
+          ],
+          "skills": [
+            "Java",
+            "C"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "151"
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
-      }
+        },
+        "102": {
+          "id": "102",
+          "name": "Capability 2",
+          "type": "capability",
+          "description": "this is capability 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "152",
+            "153"
+          ]
+        },
+        "151": {
+          "id": "151",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "101"
+          ],
+          "children": [
+            "201",
+            "202"
+          ]
+        },
+        "152": {
+          "id": "152",
+          "name": "requirement 2",
+          "type": "requirement",
+          "description": "this is requirement 2",
+          "size": [
+            5,
+            1
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203"
+          ]
+        },
+        "153": {
+          "id": "153",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 3",
+          "size": [
+            10,
+            5
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0.1,
+            15
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203",
+            "204"
+          ]
+        },
+        "201": {
+          "id": "201",
+          "name": "task 1",
+          "type": "task",
+          "description": "this is task 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "Java"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151"
+          ],
+          "children": []
+        },
+        "202": {
+          "id": "202",
+          "name": "task 2",
+          "type": "task",
+          "description": "this is task 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "JavaScript"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151",
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "203": {
+          "id": "203",
+          "name": "task 3",
+          "type": "task",
+          "description": "this is task 3",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "204": {
+          "id": "204",
+          "name": "task 4",
+          "type": "task",
+          "description": "this is task 4",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "153"
+          ],
+          "children": []
+        }
+      },
+      "Events": []
     },
-    "work_items": {
-      "101": {
-        "id": 101,
-        "name": "Capability 1",
-        "type": "capability",
-        "description": "this is capability 1",
-        "size": [
-          20,
-          5
-        ],
-        "skills": [
-          "Java",
-          "C"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 5,
-        "parents": [],
-        "children": [
-          151
-        ]
-      },
-      "102": {
-        "id": 102,
-        "name": "Capability 2",
-        "type": "capability",
-        "description": "this is capability 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "completeness": 0,
-        "value": 10,
-        "parents": [],
-        "children": [
-          152,
-          153
-        ]
-      },
-      "151": {
-        "id": 151,
-        "type": "requirement",
-        "name": "requirement 1",
-        "description": "this is requirement 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          101
-        ],
-        "children": [
-          201,
-          202
-        ]
-      },
-      "152": {
-        "id": 152,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203
-        ]
-      },
-      "153": {
-        "id": 153,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203,
-          203
-        ]
-      },
-      "201": {
-        "id": 201,
-        "type": "task",
-        "name": "task 1",
-        "description": "this is task 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 1,
-        "value": 10,
-        "parents": [
-          151
-        ],
-        "children": []
-      },
-      "202": {
-        "id": 202,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          151,
-          152,
-          153
-        ],
-        "children": []
-      },
-      "203": {
-        "id": 203,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 3",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          152,
-          153
-        ],
-        "children": []
-      },
-      "204": {
-        "id": 203,
-        "type": "task",
-        "name": "task 4",
-        "description": "this is task 4",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          153
-        ],
-        "children": []
-      }
-    }
-  },
-  {
-    "agents": {
-      "1": {
-        "name": "Tom",
-        "description": "Java Software Engineer",
-        "id": 1,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 1.1
-          },
-          {
-            "name": "C++",
-            "proficiency": 1.5
-          }
-        ],
-        "external_queue": [],
-        "accepted_queue": [
-          [
+    {
+      "organization_components": {
+        "1": {
+          "name": "Tom",
+          "description": "Java Software Engineer",
+          "id": 1,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 1.1
+            },
+            {
+              "name": "C++",
+              "proficiency": 1.5
+            }
+          ],
+          "accepted_queue": [
             201
-          ]
-        ],
-        "working_queue": [
-          [
+          ],
+          "working_queue": [
             202
+          ],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ]
-      },
-      "2": {
-        "name": "Mobile Team",
-        "description": "This is Mobile Team",
-        "id": 2,
-        "skills": [
-          {
-            "name": "C#",
-            "proficiency": 3
-          },
-          {
-            "name": "C",
-            "proficiency": 2
-          }
-        ],
-        "external_queue": [
-          [
+        },
+        "2": {
+          "name": "Mobile Team",
+          "description": "This is Mobile Team",
+          "id": 2,
+          "skills": [
+            {
+              "name": "C#",
+              "proficiency": 3
+            },
+            {
+              "name": "C",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [
             203
+          ],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
+        },
+        "3": {
+          "name": "Server Team",
+          "description": "This is Mobile Team",
+          "id": 3,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
+          ]
+        }
       },
-      "3": {
-        "name": "Server Team",
-        "description": "This is Mobile Team",
-        "id": 3,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 2
-          }
-        ],
-        "exeternal_queue": [
-          [
-            204
+      "work_items": {
+        "101": {
+          "id": "101",
+          "name": "Capability 1",
+          "type": "capability",
+          "description": "this is capability 1",
+          "size": [
+            20,
+            5
+          ],
+          "skills": [
+            "Java",
+            "C"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "151"
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
-      }
+        },
+        "102": {
+          "id": "102",
+          "name": "Capability 2",
+          "type": "capability",
+          "description": "this is capability 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "152",
+            "153"
+          ]
+        },
+        "151": {
+          "id": "151",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "101"
+          ],
+          "children": [
+            "201",
+            "202"
+          ]
+        },
+        "152": {
+          "id": "152",
+          "name": "requirement 2",
+          "type": "requirement",
+          "description": "this is requirement 2",
+          "size": [
+            5,
+            1
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203"
+          ]
+        },
+        "153": {
+          "id": "153",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 3",
+          "size": [
+            10,
+            5
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0.1,
+            15
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203",
+            "204"
+          ]
+        },
+        "201": {
+          "id": "201",
+          "name": "task 1",
+          "type": "task",
+          "description": "this is task 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "Java"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151"
+          ],
+          "children": []
+        },
+        "202": {
+          "id": "202",
+          "name": "task 2",
+          "type": "task",
+          "description": "this is task 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "JavaScript"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151",
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "203": {
+          "id": "203",
+          "name": "task 3",
+          "type": "task",
+          "description": "this is task 3",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "204": {
+          "id": "204",
+          "name": "task 4",
+          "type": "task",
+          "description": "this is task 4",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "153"
+          ],
+          "children": []
+        }
+      },
+      "Events": [
+        {
+          "src_oc_id": "1",
+          "dst_oc_id": "2",
+          "work_item_id": "201",
+          "type": "WI Delegation",
+          "description": "first event."
+        },
+        {
+          "src_oc_id": "2",
+          "dst_oc_id": "",
+          "work_item_id": "201",
+          "type": "Work Started",
+          "description": "OC-2 started on WI-201"
+        }
+      ]
     },
-    "work_items": {
-      "101": {
-        "id": 101,
-        "name": "Capability 1",
-        "type": "capability",
-        "description": "this is capability 1",
-        "size": [
-          20,
-          5
-        ],
-        "skills": [
-          "Java",
-          "C"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 5,
-        "parents": [],
-        "children": [
-          151
-        ]
-      },
-      "102": {
-        "id": 102,
-        "name": "Capability 2",
-        "type": "capability",
-        "description": "this is capability 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "completeness": 0,
-        "value": 10,
-        "parents": [],
-        "children": [
-          152,
-          153
-        ]
-      },
-      "151": {
-        "id": 151,
-        "type": "requirement",
-        "name": "requirement 1",
-        "description": "this is requirement 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          101
-        ],
-        "children": [
-          201,
-          202
-        ]
-      },
-      "152": {
-        "id": 152,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203
-        ]
-      },
-      "153": {
-        "id": 153,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203,
-          203
-        ]
-      },
-      "201": {
-        "id": 201,
-        "type": "task",
-        "name": "task 1",
-        "description": "this is task 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 1,
-        "value": 10,
-        "parents": [
-          151
-        ],
-        "children": []
-      },
-      "202": {
-        "id": 202,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          151,
-          152,
-          153
-        ],
-        "children": []
-      },
-      "203": {
-        "id": 203,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 3",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          152,
-          153
-        ],
-        "children": []
-      },
-      "204": {
-        "id": 203,
-        "type": "task",
-        "name": "task 4",
-        "description": "this is task 4",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          153
-        ],
-        "children": []
-      }
-    }
-  },
-  {
-    "agents": {
-      "1": {
-        "name": "Tom",
-        "description": "Java Software Engineer",
-        "id": 1,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 1.1
-          },
-          {
-            "name": "C++",
-            "proficiency": 1.5
-          }
-        ],
-        "external_queue": [],
-        "accepted_queue": [
-          [
+    {
+      "organization_components": {
+        "1": {
+          "name": "Tom",
+          "description": "Java Software Engineer",
+          "id": 1,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 1.1
+            },
+            {
+              "name": "C++",
+              "proficiency": 1.5
+            }
+          ],
+          "accepted_queue": [
             201
-          ]
-        ],
-        "working_queue": [
-          [
+          ],
+          "working_queue": [
             202
+          ],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ]
-      },
-      "2": {
-        "name": "Mobile Team",
-        "description": "This is Mobile Team",
-        "id": 2,
-        "skills": [
-          {
-            "name": "C#",
-            "proficiency": 3
-          },
-          {
-            "name": "C",
-            "proficiency": 2
-          }
-        ],
-        "external_queue": [
-          [
+        },
+        "2": {
+          "name": "Mobile Team",
+          "description": "This is Mobile Team",
+          "id": 2,
+          "skills": [
+            {
+              "name": "C#",
+              "proficiency": 3
+            },
+            {
+              "name": "C",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [
             203
+          ],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
+        },
+        "3": {
+          "name": "Server Team",
+          "description": "This is Mobile Team",
+          "id": 3,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
+          ]
+        }
       },
-      "3": {
-        "name": "Server Team",
-        "description": "This is Mobile Team",
-        "id": 3,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 2
-          }
-        ],
-        "exeternal_queue": [
-          [
-            204
+      "work_items": {
+        "101": {
+          "id": "101",
+          "name": "Capability 1",
+          "type": "capability",
+          "description": "this is capability 1",
+          "size": [
+            20,
+            5
+          ],
+          "skills": [
+            "Java",
+            "C"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "151"
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
-      }
+        },
+        "102": {
+          "id": "102",
+          "name": "Capability 2",
+          "type": "capability",
+          "description": "this is capability 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "152",
+            "153"
+          ]
+        },
+        "151": {
+          "id": "151",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "101"
+          ],
+          "children": [
+            "201",
+            "202"
+          ]
+        },
+        "152": {
+          "id": "152",
+          "name": "requirement 2",
+          "type": "requirement",
+          "description": "this is requirement 2",
+          "size": [
+            5,
+            1
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203"
+          ]
+        },
+        "153": {
+          "id": "153",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 3",
+          "size": [
+            10,
+            5
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0.1,
+            15
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203",
+            "204"
+          ]
+        },
+        "201": {
+          "id": "201",
+          "name": "task 1",
+          "type": "task",
+          "description": "this is task 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "Java"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151"
+          ],
+          "children": []
+        },
+        "202": {
+          "id": "202",
+          "name": "task 2",
+          "type": "task",
+          "description": "this is task 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "JavaScript"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151",
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "203": {
+          "id": "203",
+          "name": "task 3",
+          "type": "task",
+          "description": "this is task 3",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "204": {
+          "id": "204",
+          "name": "task 4",
+          "type": "task",
+          "description": "this is task 4",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "153"
+          ],
+          "children": []
+        }
+      },
+      "Events": [
+        {
+          "src_oc_id": "2",
+          "dst_oc_id": "1",
+          "work_item_id": "202",
+          "type": "WI Delegation",
+          "description": "OC-2 delegated WI-202 to OC-1"
+        }
+      ]
     },
-    "work_items": {
-      "101": {
-        "id": 101,
-        "name": "Capability 1",
-        "type": "capability",
-        "description": "this is capability 1",
-        "size": [
-          20,
-          5
-        ],
-        "skills": [
-          "Java",
-          "C"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 5,
-        "parents": [],
-        "children": [
-          151
-        ]
-      },
-      "102": {
-        "id": 102,
-        "name": "Capability 2",
-        "type": "capability",
-        "description": "this is capability 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "completeness": 0,
-        "value": 10,
-        "parents": [],
-        "children": [
-          152,
-          153
-        ]
-      },
-      "151": {
-        "id": 151,
-        "type": "requirement",
-        "name": "requirement 1",
-        "description": "this is requirement 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          101
-        ],
-        "children": [
-          201,
-          202
-        ]
-      },
-      "152": {
-        "id": 152,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203
-        ]
-      },
-      "153": {
-        "id": 153,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203,
-          203
-        ]
-      },
-      "201": {
-        "id": 201,
-        "type": "task",
-        "name": "task 1",
-        "description": "this is task 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 1,
-        "value": 10,
-        "parents": [
-          151
-        ],
-        "children": []
-      },
-      "202": {
-        "id": 202,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          151,
-          152,
-          153
-        ],
-        "children": []
-      },
-      "203": {
-        "id": 203,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 3",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          152,
-          153
-        ],
-        "children": []
-      },
-      "204": {
-        "id": 203,
-        "type": "task",
-        "name": "task 4",
-        "description": "this is task 4",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          153
-        ],
-        "children": []
-      }
-    }
-  },
-  {
-    "agents": {
-      "1": {
-        "name": "Tom",
-        "description": "Java Software Engineer",
-        "id": 1,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 1.1
-          },
-          {
-            "name": "C++",
-            "proficiency": 1.5
-          }
-        ],
-        "external_queue": [],
-        "accepted_queue": [
-          [
+    {
+      "organization_components": {
+        "1": {
+          "name": "Tom",
+          "description": "Java Software Engineer",
+          "id": 1,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 1.1
+            },
+            {
+              "name": "C++",
+              "proficiency": 1.5
+            }
+          ],
+          "accepted_queue": [
             201
-          ]
-        ],
-        "working_queue": [
-          [
+          ],
+          "working_queue": [
             202
+          ],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ]
-      },
-      "2": {
-        "name": "Mobile Team",
-        "description": "This is Mobile Team",
-        "id": 2,
-        "skills": [
-          {
-            "name": "C#",
-            "proficiency": 3
-          },
-          {
-            "name": "C",
-            "proficiency": 2
-          }
-        ],
-        "external_queue": [
-          [
+        },
+        "2": {
+          "name": "Mobile Team",
+          "description": "This is Mobile Team",
+          "id": 2,
+          "skills": [
+            {
+              "name": "C#",
+              "proficiency": 3
+            },
+            {
+              "name": "C",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [
             203
+          ],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
-      },
-      "3": {
-        "name": "Server Team",
-        "description": "This is Mobile Team",
-        "id": 3,
-        "skills": [
-          {
-            "name": "Java",
-            "proficiency": 2
-          }
-        ],
-        "exeternal_queue": [
-          [
-            204
+        },
+        "3": {
+          "name": "Server Team",
+          "description": "This is Mobile Team",
+          "id": 3,
+          "skills": [
+            {
+              "name": "Java",
+              "proficiency": 2
+            }
+          ],
+          "accepted_queue": [],
+          "working_queue": [],
+          "indicators": [
+            0,
+            0,
+            0
           ]
-        ],
-        "accepted_queue": [],
-        "working_queue": []
-      }
-    },
-    "work_items": {
-      "101": {
-        "id": 101,
-        "name": "Capability 1",
-        "type": "capability",
-        "description": "this is capability 1",
-        "size": [
-          20,
-          5
-        ],
-        "skills": [
-          "Java",
-          "C"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 5,
-        "parents": [],
-        "children": [
-          151
-        ]
+        }
       },
-      "102": {
-        "id": 102,
-        "name": "Capability 2",
-        "type": "capability",
-        "description": "this is capability 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "completeness": 0,
-        "value": 10,
-        "parents": [],
-        "children": [
-          152,
-          153
-        ]
+      "work_items": {
+        "101": {
+          "id": "101",
+          "name": "Capability 1",
+          "type": "capability",
+          "description": "this is capability 1",
+          "size": [
+            20,
+            5
+          ],
+          "skills": [
+            "Java",
+            "C"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "151"
+          ]
+        },
+        "102": {
+          "id": "102",
+          "name": "Capability 2",
+          "type": "capability",
+          "description": "this is capability 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            5
+          ],
+          "parents": [],
+          "children": [
+            "152",
+            "153"
+          ]
+        },
+        "151": {
+          "id": "151",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "101"
+          ],
+          "children": [
+            "201",
+            "202"
+          ]
+        },
+        "152": {
+          "id": "152",
+          "name": "requirement 2",
+          "type": "requirement",
+          "description": "this is requirement 2",
+          "size": [
+            5,
+            1
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203"
+          ]
+        },
+        "153": {
+          "id": "153",
+          "name": "requirement 3",
+          "type": "requirement",
+          "description": "this is requirement 3",
+          "size": [
+            10,
+            5
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0.1,
+            15
+          ],
+          "parents": [
+            "102"
+          ],
+          "children": [
+            "202",
+            "203",
+            "204"
+          ]
+        },
+        "201": {
+          "id": "201",
+          "name": "task 1",
+          "type": "task",
+          "description": "this is task 1",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "Java"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151"
+          ],
+          "children": []
+        },
+        "202": {
+          "id": "202",
+          "name": "task 2",
+          "type": "task",
+          "description": "this is task 2",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "JavaScript"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "151",
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "203": {
+          "id": "203",
+          "name": "task 3",
+          "type": "task",
+          "description": "this is task 3",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            20
+          ],
+          "parents": [
+            "152",
+            "153"
+          ],
+          "children": []
+        },
+        "204": {
+          "id": "204",
+          "name": "task 4",
+          "type": "task",
+          "description": "this is task 4",
+          "size": [
+            10,
+            3
+          ],
+          "skills": [
+            "C#"
+          ],
+          "assigned_to": "",
+          "completed_by": "",
+          "indicators": [
+            0,
+            10
+          ],
+          "parents": [
+            "153"
+          ],
+          "children": []
+        }
       },
-      "151": {
-        "id": 151,
-        "type": "requirement",
-        "name": "requirement 1",
-        "description": "this is requirement 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          101
-        ],
-        "children": [
-          201,
-          202
-        ]
-      },
-      "152": {
-        "id": 152,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203
-        ]
-      },
-      "153": {
-        "id": 153,
-        "type": "requirement",
-        "name": "requirement 2",
-        "description": "this is requirement 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          102
-        ],
-        "children": [
-          202,
-          203,
-          203
-        ]
-      },
-      "201": {
-        "id": 201,
-        "type": "task",
-        "name": "task 1",
-        "description": "this is task 1",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 1,
-        "value": 10,
-        "parents": [
-          151
-        ],
-        "children": []
-      },
-      "202": {
-        "id": 202,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 2",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          151,
-          152,
-          153
-        ],
-        "children": []
-      },
-      "203": {
-        "id": 203,
-        "type": "task",
-        "name": "task 2",
-        "description": "this is task 3",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          152,
-          153
-        ],
-        "children": []
-      },
-      "204": {
-        "id": 203,
-        "type": "task",
-        "name": "task 4",
-        "description": "this is task 4",
-        "size": [
-          10,
-          3
-        ],
-        "skills": [
-          "C#"
-        ],
-        "assignment": [],
-        "completeness": 0,
-        "value": 10,
-        "parents": [
-          153
-        ],
-        "children": []
-      }
+      "Events": [
+        {
+          "src_oc_id": "2",
+          "dst_oc_id": "",
+          "work_item_id": "201",
+          "type": "WI Completed",
+          "description": "OC-2 finished WI-201"
+        }
+      ]
     }
-  }
-]
+  ]
+}
