@@ -1,6 +1,6 @@
 {
   "oc_dictionary": [
-    "wip",
+    {"name":"wip", "x":"time","y":"#","title":"Work"},
     "done",
     "work load"
   ],
@@ -8,6 +8,7 @@
     "completeness",
     "value"
   ],
+
   "frames": [
     {
       "organization_components": {
@@ -304,6 +305,7 @@
           "children": []
         }
       },
+
       "Events": []
     },
     {
