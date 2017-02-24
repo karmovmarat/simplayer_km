@@ -4,16 +4,23 @@
 
 body {
     margin: 0px;
+    font-family: Univers, Arial, sans-serif;
 }
 
-#wrapper{
+.top-wrapper {
     width: 1200px;
+    height: inherit;
     margin: 0 auto;
 }
 
 .content_left {
     width: 400px;
     float: left;
+}
+
+.content_left > h3 {
+    text-align: center;
+    margin: 0px;
 }
 
 .content_right {
@@ -23,16 +30,47 @@ body {
 }
 
 #header {
-    height: 75px;
+    height: 60px;
     width: inherit;
     background: #00ff51;
     clear: both;
 }
 
+#sys_logo {
+    height: 50px;
+    width: 200px;
+    float: left;
+    margin: auto;
+}
+
 #exp_name {
+    height: 50px;
+    width: 150px;
+    float: left;
+}
+
+#time_display {
     height: 65px;
     width: 150px;
     float: left;
+}
+
+#simulation_speed {
+    height: 65px;
+    width: 150px;
+    float: left;
+}
+
+#simulation_buttons_div {
+    height: 65px;
+    width: 200px;
+    float: left;
+    align-content: center;
+}
+
+.simulation-button {
+    height: 35px;
+    width: 35px;
 }
 
 .progress-chart {
@@ -64,7 +102,7 @@ body {
     position: absolute;
     left: 0px;
     /*font-weight: 800;*/
-    font-size:10pt;
+    font-size: 10pt;
     padding: 0px 30px 2px 10px;
     color: #000;
     /*background-color: rgba(25, 25, 25, 0.2);*/
@@ -78,6 +116,8 @@ body {
     padding: 0px 10px 2px;
 }
 
-
+.capability {
+    height: 40px;
+}
 
 

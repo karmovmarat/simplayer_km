@@ -1,5 +1,6 @@
-// 20:29
+//2017-02-23 18:21
 des_data = {
+    "basic_info": {"exp_name": "Test Exp Name"},
     "oc_dictionary": [{"name": "wip", "x": "Time", "y": "#", "title": "Work Item In Progress"}, {
         "name": "done",
         "x": "Time",
@@ -91,7 +92,7 @@ des_data = {
                 "size": [5, 1],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.17, "value": 10},
                 "children": ["202", "203"]
             },
             "153": {
@@ -102,7 +103,7 @@ des_data = {
                 "size": [10, 5],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.1, "value": 15},
+                "indicators": {"completeness": 0.21, "value": 15},
                 "children": ["202", "203", "204"]
             },
             "201": {
@@ -113,7 +114,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["Java"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.1, "value": 20},
                 "children": []
             },
             "202": {
@@ -124,7 +125,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["JavaScript"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.1, "value": 20},
                 "children": []
             },
             "203": {
@@ -135,7 +136,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.1, "value": 20},
                 "children": []
             },
             "204": {
@@ -146,7 +147,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.1, "value": 10},
                 "children": []
             }
         },
@@ -191,7 +192,7 @@ des_data = {
                 "size": [20, 5],
                 "skills": ["Java", "C"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 0.15, "value": 5},
                 "children": ["151"]
             },
             "102": {
@@ -202,7 +203,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 0.12, "value": 5},
                 "children": ["152", "153"]
             },
             "151": {
@@ -213,7 +214,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.3, "value": 10},
+                "indicators": {"completeness": 0.25, "value": 10},
                 "children": ["201", "202"]
             },
             "152": {
@@ -224,7 +225,7 @@ des_data = {
                 "size": [5, 1],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.27, "value": 10},
                 "children": ["202", "203"]
             },
             "153": {
@@ -235,7 +236,7 @@ des_data = {
                 "size": [10, 5],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.1, "value": 15},
+                "indicators": {"completeness": 0.31, "value": 15},
                 "children": ["202", "203", "204"]
             },
             "201": {
@@ -246,7 +247,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["Java"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.4, "value": 20},
                 "children": []
             },
             "202": {
@@ -257,7 +258,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["JavaScript"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.5, "value": 20},
                 "children": []
             },
             "203": {
@@ -268,7 +269,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.1, "value": 20},
                 "children": []
             },
             "204": {
@@ -279,7 +280,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.1, "value": 10},
                 "children": []
             }
         },
@@ -338,7 +339,7 @@ des_data = {
                 "size": [20, 5],
                 "skills": ["Java", "C"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 0.35, "value": 5},
                 "children": ["151"]
             },
             "102": {
@@ -349,7 +350,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 0.42, "value": 5},
                 "children": ["152", "153"]
             },
             "151": {
@@ -360,7 +361,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.8, "value": 10},
+                "indicators": {"completeness": 0.55, "value": 10},
                 "children": ["201", "202"]
             },
             "152": {
@@ -371,7 +372,7 @@ des_data = {
                 "size": [5, 1],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.57, "value": 10},
                 "children": ["202", "203"]
             },
             "153": {
@@ -382,7 +383,7 @@ des_data = {
                 "size": [10, 5],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.1, "value": 15},
+                "indicators": {"completeness": 0.51, "value": 15},
                 "children": ["202", "203", "204"]
             },
             "201": {
@@ -393,7 +394,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["Java"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.6, "value": 20},
                 "children": []
             },
             "202": {
@@ -404,7 +405,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["JavaScript"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.7, "value": 20},
                 "children": []
             },
             "203": {
@@ -415,7 +416,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 0.5, "value": 20},
                 "children": []
             },
             "204": {
@@ -426,7 +427,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.5, "value": 10},
                 "children": []
             }
         },
@@ -478,7 +479,7 @@ des_data = {
                 "size": [20, 5],
                 "skills": ["Java", "C"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 1, "value": 5},
                 "children": ["151"]
             },
             "102": {
@@ -489,7 +490,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 5},
+                "indicators": {"completeness": 1, "value": 5},
                 "children": ["152", "153"]
             },
             "151": {
@@ -500,7 +501,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 1.0, "value": 10},
+                "indicators": {"completeness": 0.99, "value": 10},
                 "children": ["201", "202"]
             },
             "152": {
@@ -511,7 +512,7 @@ des_data = {
                 "size": [5, 1],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.86, "value": 10},
                 "children": ["202", "203"]
             },
             "153": {
@@ -522,7 +523,7 @@ des_data = {
                 "size": [10, 5],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0.1, "value": 15},
+                "indicators": {"completeness": 0.7, "value": 15},
                 "children": ["202", "203", "204"]
             },
             "201": {
@@ -533,7 +534,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["Java"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 1, "value": 20},
                 "children": []
             },
             "202": {
@@ -544,7 +545,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["JavaScript"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 1, "value": 20},
                 "children": []
             },
             "203": {
@@ -555,7 +556,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 20},
+                "indicators": {"completeness": 1, "value": 20},
                 "children": []
             },
             "204": {
@@ -566,7 +567,7 @@ des_data = {
                 "size": [10, 3],
                 "skills": ["C#"],
                 "assigned_to": "",
-                "indicators": {"completeness": 0, "value": 10},
+                "indicators": {"completeness": 0.9, "value": 10},
                 "children": []
             }
         },

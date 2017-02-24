@@ -23,20 +23,28 @@ Base_Chart.prototype.getFrame = function () {
 
 function Progress_Chart(data, div_obj) {
     if (data.work_item_dictionary.hasOwnProperty("abc") && debug) {
-    console.log("field missing.");
-}
+        console.log("field missing.");
+    }
     Base_Chart.call(this, data, div_obj);
+    //custom data
     this.own_data = [];
     for (var i in data.frames) {
         var f = [];
         var frame = data.frames[i];
         for (var j in frame.work_items) {
-            f.push({
-                "id": frame.work_items[j].id,
-                "name": frame.work_items[j].name,
-                "children": new Object(frame.work_items[j].children),
-                "completeness": frame.work_items[j].indicators["completeness"]
-            })
+            if (frame.work_items.hasOwnProperty(j)) {
+                f.push({
+                    "id": frame.work_items[j].id,
+                    "type": frame.work_items[j].type,
+                    "name": frame.work_items[j].name,
+                    "oc": frame.work_items[j].assigned_to,
+                    "children": new Object(frame.work_items[j].children),
+                    "completeness": frame.work_items[j].indicators["completeness"],
+                    "value": frame.work_items[j].indicators["value"]
+                });
+            } else {
+                console.log("Progress_Chart instantiated failed, unexpected data format.");
+            }
         }
         this.own_data.push(f);
     }
@@ -53,7 +61,9 @@ Progress_Chart.prototype.initiate = function () {
 Progress_Chart.prototype.setFrame = function (n) {
     if (n >= this.own_data.length) return false;
     var frame_data = this.own_data[n];
+    //noinspection JSUnresolvedFunction
     this.div_obj.selectAll("div").remove();
+    //noinspection JSUnresolvedFunction
     var div = this.div_obj.selectAll("div").data(frame_data);
 
     var diventer = div.enter().append("div").attr("id", function (d) {
@@ -69,7 +79,7 @@ Progress_Chart.prototype.setFrame = function (n) {
     });
 
     diventer.append("span").attr("class", "progress-bar-percent").text(function (d) {
-        return d.completeness * 100 + "%";
+        return (d.completeness * 100).toFixed(2) + "%";
     });
 
     diventer.exit().remove();

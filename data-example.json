@@ -1,14 +1,56 @@
 {
+  "basic_info": {
+    "exp_name": "Test Exp Name"
+  },
   "oc_dictionary": [
-    {"name":"wip", "x":"time","y":"#","title":"Work"},
-    "done",
-    "work load"
+    {
+      "name": "wip",
+      "x": "Time",
+      "y": "#",
+      "title": "Work Item In Progress"
+    },
+    {
+      "name": "done",
+      "x": "Time",
+      "y": "#",
+      "title": "Completed Work Items"
+    },
+    {
+      "name": "work load",
+      "x": "Time",
+      "y": "Load",
+      "title": "Work Load"
+    }
   ],
   "work_item_dictionary": [
-    "completeness",
-    "value"
+    {
+      "name": "completeness",
+      "x": "Time",
+      "y": "%",
+      "title": "Completeness"
+    },
+    {
+      "name": "value",
+      "x": "Time",
+      "y": "Value",
+      "title": "Value"
+    }
   ],
-
+  "event_dictionary": [],
+  "frame_dictionary": [
+    {
+      "name": "wip",
+      "x": "Time",
+      "y": "#",
+      "title": "Total # of Work Item in Progress"
+    },
+    {
+      "name": "done",
+      "x": "Time",
+      "y": "#",
+      "title": "Total # of Completed Work Items"
+    }
+  ],
   "frames": [
     {
       "organization_components": {
@@ -32,11 +74,11 @@
           "working_queue": [
             202
           ],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "2": {
           "name": "Mobile Team",
@@ -56,11 +98,11 @@
             203
           ],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "3": {
           "name": "Server Team",
@@ -74,11 +116,11 @@
           ],
           "accepted_queue": [],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         }
       },
       "work_items": {
@@ -96,12 +138,10 @@
             "C"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0,
+            "value": 5
+          },
           "children": [
             "151"
           ]
@@ -119,12 +159,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0,
+            "value": 5
+          },
           "children": [
             "152",
             "153"
@@ -132,7 +170,7 @@
         },
         "151": {
           "id": "151",
-          "name": "requirement 3",
+          "name": "requirement 1",
           "type": "requirement",
           "description": "this is requirement 1",
           "size": [
@@ -143,14 +181,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "101"
-          ],
+          "indicators": {
+            "completeness": 0.15,
+            "value": 10
+          },
           "children": [
             "201",
             "202"
@@ -169,14 +203,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.17,
+            "value": 10
+          },
           "children": [
             "202",
             "203"
@@ -195,14 +225,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0.1,
-            15
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.21,
+            "value": 15
+          },
           "children": [
             "202",
             "203",
@@ -222,14 +248,10 @@
             "Java"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 20
+          },
           "children": []
         },
         "202": {
@@ -245,16 +267,10 @@
             "JavaScript"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151",
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 20
+          },
           "children": []
         },
         "203": {
@@ -270,15 +286,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 20
+          },
           "children": []
         },
         "204": {
@@ -294,19 +305,18 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 10
+          },
           "children": []
         }
       },
-
-      "Events": []
+      "events": [],
+      "aggregating_indicators": {
+        "wip": 0,
+        "done": 0
+      }
     },
     {
       "organization_components": {
@@ -330,11 +340,11 @@
           "working_queue": [
             202
           ],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "2": {
           "name": "Mobile Team",
@@ -354,11 +364,11 @@
             203
           ],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "3": {
           "name": "Server Team",
@@ -372,11 +382,11 @@
           ],
           "accepted_queue": [],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         }
       },
       "work_items": {
@@ -394,12 +404,10 @@
             "C"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0.15,
+            "value": 5
+          },
           "children": [
             "151"
           ]
@@ -417,12 +425,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0.12,
+            "value": 5
+          },
           "children": [
             "152",
             "153"
@@ -430,7 +436,7 @@
         },
         "151": {
           "id": "151",
-          "name": "requirement 3",
+          "name": "requirement 1",
           "type": "requirement",
           "description": "this is requirement 1",
           "size": [
@@ -441,14 +447,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "101"
-          ],
+          "indicators": {
+            "completeness": 0.25,
+            "value": 10
+          },
           "children": [
             "201",
             "202"
@@ -467,14 +469,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.27,
+            "value": 10
+          },
           "children": [
             "202",
             "203"
@@ -493,14 +491,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0.1,
-            15
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.31,
+            "value": 15
+          },
           "children": [
             "202",
             "203",
@@ -520,14 +514,10 @@
             "Java"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151"
-          ],
+          "indicators": {
+            "completeness": 0.4,
+            "value": 20
+          },
           "children": []
         },
         "202": {
@@ -543,16 +533,10 @@
             "JavaScript"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151",
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.5,
+            "value": 20
+          },
           "children": []
         },
         "203": {
@@ -568,15 +552,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 20
+          },
           "children": []
         },
         "204": {
@@ -592,33 +571,35 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.1,
+            "value": 10
+          },
           "children": []
         }
       },
-      "Events": [
+      "events": [
         {
           "src_oc_id": "1",
           "dst_oc_id": "2",
           "work_item_id": "201",
           "type": "WI Delegation",
-          "description": "first event."
+          "description": "first event.",
+          "indicators": {}
         },
         {
           "src_oc_id": "2",
           "dst_oc_id": "",
           "work_item_id": "201",
           "type": "Work Started",
-          "description": "OC-2 started on WI-201"
+          "description": "OC-2 started on WI-201",
+          "indicators": {}
         }
-      ]
+      ],
+      "aggregating_indicators": {
+        "wip": 1,
+        "done": 0
+      }
     },
     {
       "organization_components": {
@@ -642,11 +623,11 @@
           "working_queue": [
             202
           ],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "2": {
           "name": "Mobile Team",
@@ -666,11 +647,11 @@
             203
           ],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "3": {
           "name": "Server Team",
@@ -684,11 +665,11 @@
           ],
           "accepted_queue": [],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         }
       },
       "work_items": {
@@ -706,12 +687,10 @@
             "C"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0.35,
+            "value": 5
+          },
           "children": [
             "151"
           ]
@@ -729,12 +708,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 0.42,
+            "value": 5
+          },
           "children": [
             "152",
             "153"
@@ -742,7 +719,7 @@
         },
         "151": {
           "id": "151",
-          "name": "requirement 3",
+          "name": "requirement 1",
           "type": "requirement",
           "description": "this is requirement 1",
           "size": [
@@ -753,14 +730,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "101"
-          ],
+          "indicators": {
+            "completeness": 0.55,
+            "value": 10
+          },
           "children": [
             "201",
             "202"
@@ -779,14 +752,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.57,
+            "value": 10
+          },
           "children": [
             "202",
             "203"
@@ -805,14 +774,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0.1,
-            15
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.51,
+            "value": 15
+          },
           "children": [
             "202",
             "203",
@@ -832,14 +797,10 @@
             "Java"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151"
-          ],
+          "indicators": {
+            "completeness": 0.6,
+            "value": 20
+          },
           "children": []
         },
         "202": {
@@ -855,16 +816,10 @@
             "JavaScript"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151",
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.7,
+            "value": 20
+          },
           "children": []
         },
         "203": {
@@ -880,15 +835,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.5,
+            "value": 20
+          },
           "children": []
         },
         "204": {
@@ -904,26 +854,27 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.5,
+            "value": 10
+          },
           "children": []
         }
       },
-      "Events": [
+      "events": [
         {
           "src_oc_id": "2",
           "dst_oc_id": "1",
           "work_item_id": "202",
           "type": "WI Delegation",
-          "description": "OC-2 delegated WI-202 to OC-1"
+          "description": "OC-2 delegated WI-202 to OC-1",
+          "indicators": {}
         }
-      ]
+      ],
+      "aggregating_indicators": {
+        "wip": 1,
+        "done": 0
+      }
     },
     {
       "organization_components": {
@@ -947,11 +898,11 @@
           "working_queue": [
             202
           ],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "2": {
           "name": "Mobile Team",
@@ -971,11 +922,11 @@
             203
           ],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         },
         "3": {
           "name": "Server Team",
@@ -989,11 +940,11 @@
           ],
           "accepted_queue": [],
           "working_queue": [],
-          "indicators": [
-            0,
-            0,
-            0
-          ]
+          "indicators": {
+            "wip": 0,
+            "done": 0,
+            "work load": 0
+          }
         }
       },
       "work_items": {
@@ -1011,12 +962,10 @@
             "C"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 1,
+            "value": 5
+          },
           "children": [
             "151"
           ]
@@ -1034,12 +983,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            5
-          ],
-          "parents": [],
+          "indicators": {
+            "completeness": 1,
+            "value": 5
+          },
           "children": [
             "152",
             "153"
@@ -1047,7 +994,7 @@
         },
         "151": {
           "id": "151",
-          "name": "requirement 3",
+          "name": "requirement 1",
           "type": "requirement",
           "description": "this is requirement 1",
           "size": [
@@ -1058,14 +1005,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "101"
-          ],
+          "indicators": {
+            "completeness": 0.99,
+            "value": 10
+          },
           "children": [
             "201",
             "202"
@@ -1084,14 +1027,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.86,
+            "value": 10
+          },
           "children": [
             "202",
             "203"
@@ -1110,14 +1049,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0.1,
-            15
-          ],
-          "parents": [
-            "102"
-          ],
+          "indicators": {
+            "completeness": 0.7,
+            "value": 15
+          },
           "children": [
             "202",
             "203",
@@ -1137,14 +1072,10 @@
             "Java"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151"
-          ],
+          "indicators": {
+            "completeness": 1,
+            "value": 20
+          },
           "children": []
         },
         "202": {
@@ -1160,16 +1091,10 @@
             "JavaScript"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "151",
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 1,
+            "value": 20
+          },
           "children": []
         },
         "203": {
@@ -1185,15 +1110,10 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            20
-          ],
-          "parents": [
-            "152",
-            "153"
-          ],
+          "indicators": {
+            "completeness": 1,
+            "value": 20
+          },
           "children": []
         },
         "204": {
@@ -1209,26 +1129,27 @@
             "C#"
           ],
           "assigned_to": "",
-          "completed_by": "",
-          "indicators": [
-            0,
-            10
-          ],
-          "parents": [
-            "153"
-          ],
+          "indicators": {
+            "completeness": 0.9,
+            "value": 10
+          },
           "children": []
         }
       },
-      "Events": [
+      "events": [
         {
           "src_oc_id": "2",
           "dst_oc_id": "",
           "work_item_id": "201",
           "type": "WI Completed",
-          "description": "OC-2 finished WI-201"
+          "description": "OC-2 finished WI-201",
+          "indicators": {}
         }
-      ]
+      ],
+      "aggregating_indicators": {
+        "wip": 0,
+        "done": 1
+      }
     }
   ]
 }

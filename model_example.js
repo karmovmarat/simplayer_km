@@ -146,7 +146,15 @@ var event_b = Work_Event.create("2", "", "201", "Work Started", "OC-2 started on
 var event_c = Work_Event.create("2", "1", "202", "WI Delegation", "OC-2 delegated WI-202 to OC-1", {});
 var event_d = Work_Event.create("2", "", "201", "WI Completed", "OC-2 finished WI-201", {});
 
+capability_a.indicators.completeness = 0.0;
+capability_b.indicators.completeness = 0.0;
 requirement_a.indicators.completeness = 0.15;
+requirement_b.indicators.completeness = 0.17;
+requirement_c.indicators.completeness = 0.21;
+task_a.indicators.completeness = 0.1;
+task_b.indicators.completeness = 0.1;
+task_c.indicators.completeness = 0.1;
+task_d.indicators.completeness = 0.1;
 
 frames = [
     {
@@ -171,7 +179,15 @@ frames = [
     }
 ];
 
-requirement_a.indicators.completeness = 0.3;
+capability_a.indicators.completeness = 0.15;
+capability_b.indicators.completeness = 0.12;
+requirement_a.indicators.completeness = 0.25;
+requirement_b.indicators.completeness = 0.27;
+requirement_c.indicators.completeness = 0.31;
+task_a.indicators.completeness = 0.4;
+task_b.indicators.completeness = 0.5;
+task_c.indicators.completeness = 0.1;
+task_d.indicators.completeness = 0.1;
 
 frames.push({
     "organization_components": {
@@ -194,7 +210,15 @@ frames.push({
     "aggregating_indicators": {"wip": 1, "done": 0}
 });
 
-requirement_a.indicators.completeness = 0.8;
+capability_a.indicators.completeness = 0.35;
+capability_b.indicators.completeness = 0.42;
+requirement_a.indicators.completeness = 0.55;
+requirement_b.indicators.completeness = 0.57;
+requirement_c.indicators.completeness = 0.51;
+task_a.indicators.completeness = 0.6;
+task_b.indicators.completeness = 0.7;
+task_c.indicators.completeness = 0.5;
+task_d.indicators.completeness = 0.5;
 
 frames.push({
     "organization_components": {
@@ -217,7 +241,15 @@ frames.push({
     "aggregating_indicators": {"wip": 1, "done": 0}
 });
 
-requirement_a.indicators.completeness = 1.0;
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
 
 frames.push({
     "organization_components": {
@@ -240,6 +272,9 @@ frames.push({
     "aggregating_indicators": {"wip": 0, "done": 1}
 });
 
+var basic_info = {
+    "exp_name": "Test Exp Name"
+};
 
 oc_dictionary = [
     {"name": "wip", "x": "Time", "y": "#", "title": "Work Item In Progress"},
@@ -260,6 +295,7 @@ frame_dictionary = [
 ];
 
 data = {
+    "basic_info": basic_info,
     "oc_dictionary": oc_dictionary,
     "work_item_dictionary": work_item_dictionary,
     "event_dictionary": event_dictionary,
