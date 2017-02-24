@@ -10,29 +10,27 @@ function Base_Chart(data, div_obj) {
     this.current_frame = -1;
 }
 Base_Chart.prototype.initiate = function () {
-    alert("initiate not implemented")
+    alert("initiate not implemented");
+    return false;
 };
 Base_Chart.prototype.setFrame = function (n) {
-    alert("initiate not implemented")
+    alert("initiate not implemented");
+    return false;
 };
 Base_Chart.prototype.getFrame = function () {
     return this.current_frame;
 };
-Base_Chart.prototype.getDiv_obj = function () {
-    return this.div_obj;
-};
 
 function Progress_Chart(data, div_obj) {
-    if (debug && data.work_item_dictionary.hasOwnProperty("abc")) {
-        console.log("field missing.")
-    }
+    if (data.work_item_dictionary.hasOwnProperty("abc") && debug) {
+    console.log("field missing.");
+}
     Base_Chart.call(this, data, div_obj);
-    indictors_dict = data.work_item_dictionary;
     this.own_data = [];
-    for (i in data.frames) {
+    for (var i in data.frames) {
         var f = [];
-        var frame = data.frames[i]
-        for (j in frame.work_items) {
+        var frame = data.frames[i];
+        for (var j in frame.work_items) {
             f.push({
                 "id": frame.work_items[j].id,
                 "name": frame.work_items[j].name,
@@ -43,35 +41,38 @@ function Progress_Chart(data, div_obj) {
         this.own_data.push(f);
     }
     if (debug) {
-        console.log("Progress_Chart instantiated successfully.")
+        console.log("Progress_Chart instantiated successfully.");
     }
 }
 
 Progress_Chart.prototype.initiate = function () {
     this.setFrame(0);
+    return true;
 };
 
 Progress_Chart.prototype.setFrame = function (n) {
+    if (n >= this.own_data.length) return false;
     var frame_data = this.own_data[n];
-
+    this.div_obj.selectAll("div").remove();
     var div = this.div_obj.selectAll("div").data(frame_data);
 
     var diventer = div.enter().append("div").attr("id", function (d) {
         return d.id;
     }).attr("class", "progress-bar");
 
-    diventer.append("div").attr("class", "progress-bar-fg").style("width", function (d) {
+    var a = diventer.append("div").attr("class", "progress-bar-fg").style("width", function (d) {
         return d.completeness * 100 + "%";
     });
-
+    a.exit().remove();
     diventer.append("span").attr("class", "progress-bar-name").text(function (d) {
         return d.name
     });
 
-    diventer.append("span").attr("class", "progress-bar-percent").text(function(d){
+    diventer.append("span").attr("class", "progress-bar-percent").text(function (d) {
         return d.completeness * 100 + "%";
     });
 
     diventer.exit().remove();
+    return true;
 };
 
