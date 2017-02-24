@@ -4,6 +4,9 @@
 
 var debug = true;
 
+/*
+ *  Base Chart
+ */
 function Base_Chart(data, div_obj) {
     this.orginal_data = data;
     this.div_obj = div_obj;
@@ -21,10 +24,10 @@ Base_Chart.prototype.getFrame = function () {
     return this.current_frame;
 };
 
+/*
+ *  Progress Chart
+ */
 function Progress_Chart(data, div_obj) {
-    if (data.work_item_dictionary.hasOwnProperty("abc") && debug) {
-        console.log("field missing.");
-    }
     Base_Chart.call(this, data, div_obj);
     //custom data
     this.own_data = [];
@@ -83,6 +86,52 @@ Progress_Chart.prototype.setFrame = function (n) {
     });
 
     diventer.exit().remove();
+
+    this.current_frame = n;
     return true;
 };
 
+/*
+ *  DSL Chart
+ */
+function DSL_Chart(data, div_obj) {
+    Base_Chart.call(this, data, div_obj);
+    this.current_frame = 0;
+    this.own_data = [];
+    for (var i in data.frames) {
+        var fra = [];
+        var cur = data.frames[i];
+        for (var j in cur.events) {
+            if (cur.events.hasOwnProperty(j)) {
+
+                fra.push({
+                    "description": cur.events[j].description,
+                    "type": cur.events[j].type,
+                    "src_oc": cur.organization_components[cur.events[j].src_oc_id],
+                    "dst_oc": cur.organization_components[cur.events[j].dst_oc_id],
+                    "work_item": cur.work_items[cur.events[j].work_item_id],
+                    "indicators": cur.events[j].indicators
+                });
+            }
+        }
+        this.own_data.push(fra);
+    }
+    if (debug) {
+        console.log("DSL_Chart instantiated successfully.");
+    }
+}
+
+DSL_Chart.prototype.initiate = function () {
+    this.setFrame(0);
+    return true;
+};
+
+DSL_Chart.prototype.setFrame = function (n) {
+    if (n < 0 || n >= this.own_data.length) return false;
+    var frame = this.own_data[n];
+    this.div_obj.selectAll("p").remove();
+    this.div_obj.selectAll("p").data(frame).enter().append("p").text(function (d) {
+        return d.description + " : " + (d.src_oc ? d.src_oc.name : "") + " : " + (d.dst_oc ? d.dst_oc.name : "") + " : "
+            + (d.work_item ? d.work_item.name : "");
+    });
+};

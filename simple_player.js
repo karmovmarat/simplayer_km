@@ -80,11 +80,20 @@ var data = d3.json("./data-example.json", function (error, data) {
 
     this.sim_player = new Simple_Player(data, 1);
 
+    // add charts and register below.
+
+    // progress chart
     var progress_chart = new Progress_Chart(data, d3.select("#progresses"));
     sim_player.addChart(progress_chart);
 
+    // DSL chart
+    var dsl_chart = new DSL_Chart(data, d3.select("#dsl_content"));
+    sim_player.addChart(dsl_chart);
+
+    // initiate all charts
     sim_player.initiate();
 });
+
 
 
 
