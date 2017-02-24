@@ -174,7 +174,7 @@ frames = [
             203: Work_Item.clone(task_c),
             204: Work_Item.clone(task_d)
         },
-        "events": [],
+        "events": [event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a],
         "aggregating_indicators": {"wip": 0, "done": 0}
     }
 ];
