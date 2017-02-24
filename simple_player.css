@@ -7,32 +7,19 @@ body {
     font-family: Univers, Arial, sans-serif;
 }
 
+/*
+    Wrapper for main content, let all content sit in the middle of page.
+ */
 .top-wrapper {
     width: 1200px;
-    height: inherit;
     margin: 0 auto;
-}
-
-.content_left {
-    width: 400px;
-    float: left;
-}
-
-.content_left > h3 {
-    text-align: center;
-    margin: 0px;
-}
-
-.content_right {
-    width: 600px;
-    float: left;
-    clear-after: both;
+    clear: both;
 }
 
 #header {
     height: 60px;
     width: inherit;
-    background: #00ff51;
+    background: #a3a3a3;
     clear: both;
 }
 
@@ -73,51 +60,190 @@ body {
     width: 35px;
 }
 
+/*
+    Left part of main content.
+    Most of this part is for Progress Chart
+*/
+.content_left {
+    width: 345px;
+    float: left;
+    background-color: #d7d7d7;
+    padding-right: 5px;
+}
+
+.content_left > h3 {
+    text-align: center;
+    margin: 0px;
+}
+
 .progress-chart {
     font: 10px sans-serif;
     margin: 5px;
     float: left;
-    width: 202px;
+    width: 150px;
     background: grey;
 
 }
 
 .progress-bar {
     position: relative;
-    height: 15px;
+    height: 20px;
     background-color: #ddd;
-    width: 202px;
+    width: 150px;
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    align-content: center;
+    margin-top: 1px;
 }
 
 .progress-bar-fg {
-    height: 15px;
+    height: inherit;
     background-color: #00ff51;
     position: absolute;
 }
 
 .progress-bar > .progress-bar-name {
     position: absolute;
-    left: 0px;
-    /*font-weight: 800;*/
+    left: 5px;
     font-size: 10pt;
-    padding: 0px 30px 2px 10px;
-    color: #000;
-    /*background-color: rgba(25, 25, 25, 0.2);*/
+    top: 50%;
+    transform: translateY(-50%);
+
 }
 
 .progress-bar > .progress-bar-percent {
     position: absolute;
-    right: 0px;
-    /*font-weight: 800;*/
+    right: 5px;
     font-size: 10pt;
-    padding: 0px 10px 2px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.capability {
-    height: 40px;
+#progresses .capability {
+    height: 30px;
 }
+
+/*
+    Left part of main content.
+    Left part is for rest Charts.
+ */
+.content_right {
+    width: 850px;
+    float: left;
+    clear-after: both;
+}
+
+.content_right > .content_up {
+    height: 400px;
+}
+
+#OCA {
+    float: left;
+    width: 445px;
+    height: inherit;
+    background: grey;
+}
+
+#OCA > h3 {
+    text-align: center;
+    margin: 0px;
+}
+
+#tabs {
+    float: left;
+    width: 395px;
+    line-height: 1;
+    padding-left: 5px;
+    /*	background-color: #d7d7d7;*/
+    height: inherit;
+}
+
+.tabbed {
+    float: left;
+    width: 100%;
+}
+
+.tabbed > input {
+    display: none;
+}
+
+.tabbed > section > h3 {
+    float: left;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px 2px 0px 0px;
+    overflow: hidden;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.tabbed > input:first-child + section > h3 {
+    padding-left: 1em;
+}
+
+.tabbed > section > h3 > label {
+    display: block;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.0625);
+    background: #fff;
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.tabbed > section > div {
+    position: relative;
+    z-index: 1;
+    float: right;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 22px 0 0 -100%;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.0625);
+    background: #fff;
+    height: 379px;
+    overflow-y: scroll;
+}
+
+.tabbed > input:checked + section > h3 {
+    position: relative;
+    z-index: 2;
+}
+
+.tabbed > input:not(:checked) + section > div {
+    display: none;
+}
+
+/*
+    Cumulative Flow Diagrams
+ */
+#cumulative_flow_diagrams {
+    height: 400px;
+    float: left;
+    width: 495px;
+    background-color: #dddddd;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+/*
+    Other Graphs
+ */
+#other_graphs {
+    height: 400px;
+    width: 350px;
+    float: left;
+    background-color: #d7d7d7;
+    margin-top: 5px;
+}
+
 
 

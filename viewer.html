@@ -34,9 +34,54 @@
         </div>
     </div>
     <div class="content_right">
-        <div id="OCA" style="float: left; width: 400px">Organizational Component Activity</div>
-        <div id="log" style="float: left; clear-after: both">log</div>
-        <div></div>
+        <div class="content_up">
+            <div id="OCA"><h3>Organizational Component Activity</h3></div>
+            <div id="tabs">
+                <div class="tabbed">
+                    <input name="tabbed" id="tab_org" type="radio">
+                    <section>
+                        <h3>
+                            <label for="tab_org">Org</label>
+                        </h3>
+                        <div id="org_content">
+                            ORG content
+                        </div>
+                    </section>
+                    <input name="tabbed" id="tab_cop_info" type="radio">
+                    <section>
+                        <h3>
+                            <label for="tab_cop_info">Cop Info</label>
+                        </h3>
+                        <div id="cop_info_content">
+                            Cop info content
+                        </div>
+                    </section>
+                    <input name="tabbed" id="tab_reqt_info" type="radio">
+                    <section>
+                        <h3>
+                            <label for="tab_reqt_info">Reqt Info</label>
+                        </h3>
+                        <div id="reqt_info_content">
+                            Reqt info content
+                        </div>
+                    </section>
+                    <input name="tabbed" id="tab_dsl" type="radio" checked>
+                    <section>
+                        <h3>
+                            <label for="tab_dsl">DSL</label>
+                        </h3>
+                        <div id="dsl_content">
+                            <!--DSL Chart content-->
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <div id="other_diagrams">
+            <div id="cumulative_flow_diagrams"></div>
+            <div id="other_graphs"></div>
+        </div>
     </div>
 </div>
 </body>
