@@ -175,7 +175,7 @@ frames = [
             204: Work_Item.clone(task_d)
         },
         "events": [event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a, event_a],
-        "aggregating_indicators": {"wip": 0, "done": 0}
+        "aggregating_indicators": {"wip": 10, "done": 2}
     }
 ];
 
@@ -207,7 +207,7 @@ frames.push({
         204: Work_Item.clone(task_d)
     },
     "events": [event_a, event_b],
-    "aggregating_indicators": {"wip": 1, "done": 0}
+    "aggregating_indicators": {"wip": 8, "done": 4}
 });
 
 capability_a.indicators.completeness = 0.35;
@@ -238,7 +238,7 @@ frames.push({
         204: Work_Item.clone(task_d)
     },
     "events": [event_c],
-    "aggregating_indicators": {"wip": 1, "done": 0}
+    "aggregating_indicators": {"wip": 6, "done": 4}
 });
 
 capability_a.indicators.completeness = 1;
@@ -269,7 +269,7 @@ frames.push({
         204: Work_Item.clone(task_d)
     },
     "events": [event_d],
-    "aggregating_indicators": {"wip": 0, "done": 1}
+    "aggregating_indicators": {"wip": 4, "done": 15}
 });
 
 var basic_info = {

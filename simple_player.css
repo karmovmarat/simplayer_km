@@ -17,39 +17,39 @@ body {
 }
 
 #header {
-    height: 60px;
+    height: 45px;
     width: inherit;
     background: #a3a3a3;
     clear: both;
 }
 
 #sys_logo {
-    height: 50px;
+    /*height: 50px;*/
     width: 200px;
     float: left;
     margin: auto;
 }
 
 #exp_name {
-    height: 50px;
+    /*height: 50px;*/
     width: 150px;
     float: left;
 }
 
 #time_display {
-    height: 65px;
+    /*height: 65px;*/
     width: 150px;
     float: left;
 }
 
 #simulation_speed {
-    height: 65px;
+    /*height: 65px;*/
     width: 150px;
     float: left;
 }
 
 #simulation_buttons_div {
-    height: 65px;
+    /*height: 65px;*/
     width: 200px;
     float: left;
     align-content: center;
@@ -234,6 +234,14 @@ body {
     margin-top: 5px;
 }
 
+#agg_chart {
+	height: 200px;
+	width: 395px;
+    margin: 0px;
+	float: left;
+/*	clear: both;*/
+}
+
 /*
     Other Graphs
  */
@@ -247,3 +255,17 @@ body {
 
 
 
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}

@@ -443,8 +443,8 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 0,
-        "done": 0
+        "wip": 10,
+        "done": 2
       }
     },
     {
@@ -726,8 +726,8 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 1,
-        "done": 0
+        "wip": 8,
+        "done": 4
       }
     },
     {
@@ -1001,8 +1001,8 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 1,
-        "done": 0
+        "wip": 6,
+        "done": 4
       }
     },
     {
@@ -1276,8 +1276,8 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 0,
-        "done": 1
+        "wip": 4,
+        "done": 20
       }
     }
   ]

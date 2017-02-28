@@ -13,7 +13,7 @@ function Simple_Player(data, duration) {
 Simple_Player.prototype.initiate = function () {
     for (var i in this.charts) {
         if (!this.charts[i].initiate()) {
-            console.log(charts[i] + " initiate failed.")
+            console.log(this.charts[i] + " initiate failed.")
         }
     }
     return true;
@@ -40,7 +40,7 @@ Simple_Player.prototype.play = function () {
         console.log("player is already playing.");
         return false;
     } else {
-        if(this.play_status == "finished"){
+        if(this.play_status == "finished" && this.current_frame + 1 == this.max_frame){
             this.setFrame(0);
         }else{
             this.setFrame(this.current_frame + 1);
@@ -58,6 +58,7 @@ Simple_Player.prototype.play_routine = function (player) {
             player.setFrame(player.current_frame + 1);
             setTimeout(player.play_routine, player.duration, player);
         }else{
+            player.setFrame(player.current_frame + 1);
             player.play_status = "finished";
         }
     }
@@ -90,10 +91,13 @@ var data = d3.json("./data-example.json", function (error, data) {
     var dsl_chart = new DSL_Chart(data, d3.select("#dsl_content"));
     sim_player.addChart(dsl_chart);
 
+    // aggregating indicators chart
+    var agg_chart = new Aggregating_Indicators(data, d3.select("#div_agg_indicators"), d3.select("#agg_select"), d3.select("#agg_chart"));
+    sim_player.addChart(agg_chart);
+
     // initiate all charts
     sim_player.initiate();
 });
-
 
 
 
