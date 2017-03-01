@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple</title>
-    <script src="./data.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -85,12 +84,16 @@
 					<select id="agg_select" size="10" style="width: 80px; height:200px; float: left;"></select>
                     <svg id="agg_chart"></svg>
                 </div>
-                <div id="div_oc_indicators">
+                <div id="div_oc_indicators_chart">
                     <select id="oc_select" size="10" style="width: 80px; height:200px; float: left;"></select>
-                    <select id="oc_indicator_select" size="10" style="width: 80px; height:200px; float: left;"></select>
-                    <svg id="oc_indicator_chart"></svg>
+                    <select id="oc_indicator_select" style="width: 80px; float: right;"></select>
+                    <svg id="oc_indicator_chart" style="width:395px; height: 180px"></svg>
                 </div>
-                <div id="div_wi_indicators"></div>
+                <div id="div_wi_indicators">
+                	<select id="wi_select" size="10" style="width: 80px; height:200px; float: left;"></select>
+                    <select id="wi_indicator_select" style="width: 80px; float: right;"></select>
+                    <svg id="wi_indicator_chart" style="width:395px; height: 180px"></svg>
+                </div>
             </div>
             <div id="other_graphs"></div>
         </div>

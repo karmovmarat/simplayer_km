@@ -226,7 +226,7 @@ body {
     Cumulative Flow Diagrams
  */
 #cumulative_flow_diagrams {
-    height: 400px;
+/*    height: 400px;*/
     float: left;
     width: 495px;
     background-color: #dddddd;
@@ -254,10 +254,16 @@ body {
 }
 
 
+svg .title{
+	fill: black;
+	font: 11px sans-serif;
+	font-weight: bold;
+	text-anchor: right;
+}
 
 
 path {
-    stroke: steelblue;
+    stroke: #1518f5;
     stroke-width: 2;
     fill: none;
 }

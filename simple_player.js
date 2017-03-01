@@ -40,9 +40,9 @@ Simple_Player.prototype.play = function () {
         console.log("player is already playing.");
         return false;
     } else {
-        if(this.play_status == "finished" && this.current_frame + 1 == this.max_frame){
+        if (this.play_status == "finished" && this.current_frame + 1 == this.max_frame) {
             this.setFrame(0);
-        }else{
+        } else {
             this.setFrame(this.current_frame + 1);
         }
         this.play_status = "playing";
@@ -57,7 +57,7 @@ Simple_Player.prototype.play_routine = function (player) {
         if (player.current_frame < player.max_frame - 1) {
             player.setFrame(player.current_frame + 1);
             setTimeout(player.play_routine, player.duration, player);
-        }else{
+        } else {
             player.setFrame(player.current_frame + 1);
             player.play_status = "finished";
         }
@@ -94,6 +94,13 @@ var data = d3.json("./data-example.json", function (error, data) {
     // aggregating indicators chart
     var agg_chart = new Aggregating_Indicators(data, d3.select("#div_agg_indicators"), d3.select("#agg_select"), d3.select("#agg_chart"));
     sim_player.addChart(agg_chart);
+
+    // oc indicator chart
+    var oc_indicator_chart = new OC_Indicators_Chart(data, d3.select("#div_oc_indicators_chart"), d3.select("#oc_select"), d3.select("#oc_indicator_select"), d3.select("#oc_indicator_chart"));
+    sim_player.addChart(oc_indicator_chart);
+
+    var wi_indicator_chart = new WI_Indicators_Chart(data, d3.select("#div_wi_indicators_chart"), d3.select("#wi_select"), d3.select("#wi_indicator_select"), d3.select("#wi_indicator_chart"));
+    sim_player.addChart((wi_indicator_chart));
 
     // initiate all charts
     sim_player.initiate();
