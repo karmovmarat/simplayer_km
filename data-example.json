@@ -68,6 +68,7 @@
               "proficiency": 1.5
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             201
           ],
@@ -75,9 +76,9 @@
             202
           ],
           "indicators": {
-            "wip": 0,
+            "wip": 4,
             "done": 0,
-            "work load": 0
+            "work load": 4
           }
         },
         "2": {
@@ -94,14 +95,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             203
           ],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
+            "wip": 3,
             "done": 0,
-            "work load": 0
+            "work load": 3
           }
         },
         "3": {
@@ -114,12 +116,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [
+            204
+          ],
           "accepted_queue": [],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
+            "wip": 2,
             "done": 0,
-            "work load": 0
+            "work load": 2
           }
         }
       },
@@ -463,6 +468,7 @@
               "proficiency": 1.5
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             201
           ],
@@ -470,9 +476,9 @@
             202
           ],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 2,
+            "done": 4,
+            "work load": 2
           }
         },
         "2": {
@@ -489,14 +495,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             203
           ],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 2,
+            "done": 3,
+            "work load": 2
           }
         },
         "3": {
@@ -509,12 +516,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [
+            204
+          ],
           "accepted_queue": [],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 2,
+            "done": 2,
+            "work load": 2
           }
         }
       },
@@ -746,6 +756,7 @@
               "proficiency": 1.5
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             201
           ],
@@ -753,9 +764,9 @@
             202
           ],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 7,
+            "done": 6,
+            "work load": 10
           }
         },
         "2": {
@@ -772,14 +783,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             203
           ],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 5,
+            "done": 5,
+            "work load": 22
           }
         },
         "3": {
@@ -792,12 +804,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [
+            204
+          ],
           "accepted_queue": [],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 1,
+            "done": 4,
+            "work load": 1
           }
         }
       },
@@ -1001,7 +1016,7 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 6,
+        "wip": 4,
         "done": 4
       }
     },
@@ -1021,6 +1036,7 @@
               "proficiency": 1.5
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             201
           ],
@@ -1028,9 +1044,9 @@
             202
           ],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 4,
+            "done": 9,
+            "work load": 5
           }
         },
         "2": {
@@ -1047,14 +1063,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [],
           "accepted_queue": [
             203
           ],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 1,
+            "done": 10,
+            "work load": 2
           }
         },
         "3": {
@@ -1067,12 +1084,15 @@
               "proficiency": 2
             }
           ],
+          "external_queue": [
+            204
+          ],
           "accepted_queue": [],
           "working_queue": [],
           "indicators": {
-            "wip": 0,
-            "done": 0,
-            "work load": 0
+            "wip": 2,
+            "done": 5,
+            "work load": 3
           }
         }
       },
@@ -1276,8 +1296,8 @@
         }
       ],
       "aggregating_indicators": {
-        "wip": 4,
-        "done": 20
+        "wip": 7,
+        "done": 15
       }
     }
   ]

@@ -12,20 +12,23 @@ var OrganizationComponent = {
         oc.external_queue = ext_q.slice(0);
         oc.accepted_queue = acp_q.slice(0);
         oc.working_queue = wrk_q.slice(0);
-        oc.indicators = new Object(indicators);
+        // oc.indicators = new Object(indicators);
+        oc.indicators = JSON.parse(JSON.stringify(indicators));
         return oc;
     },
     clone: function (src) {
-        var copy = {};
-        copy.name = src.name;
-        copy.description = src.description;
-        copy.id = src.id;
-        copy.skills = src.skills.concat();
-        copy.accepted_queue = src.accepted_queue.concat();
-        copy.working_queue = src.working_queue.concat();
-        copy.indicators = new Object(src.indicators);
-        return copy;
+        // var copy = {};
+        // copy.name = src.name;
+        // copy.description = src.description;
+        // copy.id = src.id;
+        // copy.skills = src.skills.concat();
+        // copy.accepted_queue = src.accepted_queue.concat();
+        // copy.working_queue = src.working_queue.concat();
+        // copy.indicators = new Object(src.indicators);
+        // return copy;
+        return JSON.parse(JSON.stringify(src));
     }
+
 };
 
 var Work_Item = {
@@ -85,14 +88,14 @@ var Work_Event = {
 
 var oc_a = OrganizationComponent.create(1, "Tom", "Java Software Engineer",
     [{"name": "Java", "proficiency": 1.1}, {"name": "C++", "proficiency": 1.5}], [], [], [],
-    {"wip": 0, "done": 0, "work load": 0});
+    {"wip": 15, "done": 3, "work load": 6});
 
 var oc_b = OrganizationComponent.create(2, "Mobile Team", "This is Mobile Team",
     [{"name": "C#", "proficiency": 3.0}, {"name": "C", "proficiency": 2.0}], [], [], [],
-    {"wip": 0, "done": 0, "work load": 0});
+    {"wip": 10, "done": 10, "work load": 10});
 
 var oc_c = OrganizationComponent.create(3, "Server Team", "This is Mobile Team",
-    [{"name": "Java", "proficiency": 2.0}], [], [], [], {"wip": 0, "done": 0, "work load": 0});
+    [{"name": "Java", "proficiency": 2.0}], [], [], [], {"wip": 22, "done": 3, "work load": 4});
 
 
 var capability_a = Work_Item.create("101", "Capability 1", "capability", "this is capability 1", [20, 5], ["Java", "C"], "", {
@@ -146,6 +149,11 @@ var event_b = Work_Event.create("2", "", "201", "Work Started", "OC-2 started on
 var event_c = Work_Event.create("2", "1", "202", "WI Delegation", "OC-2 delegated WI-202 to OC-1", {});
 var event_d = Work_Event.create("2", "", "201", "WI Completed", "OC-2 finished WI-201", {});
 
+/************************ Frame 0 ************************/
+oc_a.indicators = {"wip": 4, "done": 0, "work load": 4};
+oc_b.indicators = {"wip": 3, "done": 0, "work load": 3};
+oc_c.indicators = {"wip": 2, "done": 0, "work load": 2};
+
 capability_a.indicators.completeness = 0.0;
 capability_b.indicators.completeness = 0.0;
 requirement_a.indicators.completeness = 0.15;
@@ -179,6 +187,11 @@ frames = [
     }
 ];
 
+/************************ Frame 1 ************************/
+oc_a.indicators = {"wip": 2, "done": 4, "work load": 2};
+oc_b.indicators = {"wip": 2, "done": 3, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 2, "work load": 2};
+
 capability_a.indicators.completeness = 0.15;
 capability_b.indicators.completeness = 0.12;
 requirement_a.indicators.completeness = 0.25;
@@ -210,6 +223,11 @@ frames.push({
     "aggregating_indicators": {"wip": 8, "done": 4}
 });
 
+/************************ Frame 2 ************************/
+oc_a.indicators = {"wip": 7, "done": 6, "work load": 10};
+oc_b.indicators = {"wip": 5, "done": 5, "work load": 22};
+oc_c.indicators = {"wip": 1, "done": 4, "work load": 1};
+
 capability_a.indicators.completeness = 0.35;
 capability_b.indicators.completeness = 0.42;
 requirement_a.indicators.completeness = 0.55;
@@ -238,8 +256,14 @@ frames.push({
         204: Work_Item.clone(task_d)
     },
     "events": [event_c],
-    "aggregating_indicators": {"wip": 6, "done": 4}
+    "aggregating_indicators": {"wip": 4, "done": 4}
 });
+
+/************************ Frame 3 ************************/
+
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
 
 capability_a.indicators.completeness = 1;
 capability_b.indicators.completeness = 1;
@@ -269,7 +293,7 @@ frames.push({
         204: Work_Item.clone(task_d)
     },
     "events": [event_d],
-    "aggregating_indicators": {"wip": 4, "done": 15}
+    "aggregating_indicators": {"wip": 7, "done": 15}
 });
 
 var basic_info = {
