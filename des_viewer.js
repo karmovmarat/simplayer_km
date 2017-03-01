@@ -199,10 +199,10 @@ Aggregating_Indicators.prototype.initiate = function () {
     // define the line
     this.valueLine = d3.line()
         .x(function (d) {
-            return x(parseInt(d[0]));
+            return x(d[0]);
         })
         .y(function (d) {
-            return y(parseInt(d[1]));
+            return y(d[1]);
         });
 
     this.svg_obj.append("g")
@@ -211,24 +211,31 @@ Aggregating_Indicators.prototype.initiate = function () {
 
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_indicator], function (d) {
-        return parseInt(d[1]);
+        return d[1];
     })]);
 
     // Add the X Axis
     this.svg_obj.append("g")
-        .attr("transform", "translate(" + this.margin.left +"," + (height + this.margin.top) + ")")
+        .attr("transform", "translate(" + this.margin.left + "," + (height + this.margin.top) + ")")
         .attr("class", "x axis")
         .call(d3.axisBottom(x).ticks(this.total_frames));
 
     // Add the Y Axis
-    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left +", " + this.margin.top + ")")
+    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")")
         .attr("class", "y axis")
         .call(d3.axisLeft(y));
 
     this.svg_obj.append("path")
         .attr("class", "line")
-        .attr("transform", "translate(" + this.margin.left +"," + this.margin.top + ")")
-        .attr("d", this.valueLine(this.own_data[this.current_indicator].slice(0, this.current_frame)));
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueLine(this.own_data[this.current_indicator].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.selectAll("circle").data(this.own_data[this.current_indicator].slice(0, this.current_frame + 1))
+        .enter().append("circle").attr("r", "2.5").attr("cx", function (d) {
+        return x(d[0]);
+    }).attr("cy", function (d) {
+        return y(d[1]);
+    }).attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")").attr("class", "point");
 
     this.x = x;
     this.y = y;
@@ -238,7 +245,7 @@ Aggregating_Indicators.prototype.initiate = function () {
 Aggregating_Indicators.prototype.setFrame = function (n) {
     if (n < 0 || n >= this.own_data.length) return false;
     this.y.domain([0, d3.max(this.own_data[this.current_indicator], function (d) {
-        return parseInt(d[1]);
+        return d[1];
     })]);
     var newData = this.own_data[this.current_indicator].slice(0, n + 1);
 
@@ -248,6 +255,18 @@ Aggregating_Indicators.prototype.setFrame = function (n) {
     svg.select(".line")
         .duration(750)
         .attr("d", this.valueLine(newData));
+
+    var x = this.x;
+    var y = this.y;
+    this.svg_obj.selectAll("circle").remove();
+    this.svg_obj.selectAll("circle").data(newData).enter().append("circle").attr("r", "2.5")
+        .attr("cx", function (d) {
+            return x(d[0]);
+        })
+        .attr("cy", function (d) {
+            return y(d[1]);
+        }).attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")")
+        .attr("class", "point");
     this.current_frame = n;
     return true;
 };
@@ -336,33 +355,42 @@ OC_Indicators_Chart.prototype.initiate = function () {
             return x(i);
         })
         .y(function (d) {
-            return y(parseInt(d));
+            return y(d);
         });
-
-    this.svg_obj.append("g")
-        .attr("transform",
-            "translate(" + this.margin.left + "," + this.margin.top + ")");
 
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_oc][this.indicators[this.current_indicator].name], function (d) {
-        return parseInt(d);
+        return d;
     })]);
 
     // Add the X Axis
     this.svg_obj.append("g")
-        .attr("transform", "translate(" + this.margin.left +"," + (height + this.margin.top) + ")")
+        .attr("transform", "translate(" + this.margin.left + "," + (height + this.margin.top) + ")")
         .attr("class", "x axis")
         .call(d3.axisBottom(x).ticks(this.total_frames));
 
     // Add the Y Axis
-    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left +", " + this.margin.top + ")")
+    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")")
         .attr("class", "y axis")
         .call(d3.axisLeft(y));
 
     this.svg_obj.append("path")
         .attr("class", "line")
-        .attr("transform", "translate(" + this.margin.left +"," + this.margin.top + ")")
-        .attr("d", this.valueLine(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame)));
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueLine(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.selectAll(".point")
+        .data(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1), function (d) {
+            return d;
+        })
+        .enter().append("circle").attr("class", "point")
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("r", "2.5")
+        .attr("cx", function (d, i) {
+            return x(i);
+        }).attr("cy", function (d) {
+        return y(d);
+    }).attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")").attr("class", "point");
 
     this.x = x;
     this.y = y;
@@ -374,7 +402,7 @@ OC_Indicators_Chart.prototype.setFrame = function (n) {
     if (n < 0 || n >= this.own_data[this.current_oc][this.indicators[this.current_indicator].name].length) return false;
     // var y_key = this.current_indicator;
     this.y.domain([0, d3.max(this.own_data[this.current_oc][this.indicators[this.current_indicator].name], function (d) {
-        return parseInt(d);
+        return d;
     })]);
     var newData = this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, n + 1);
 
@@ -384,6 +412,16 @@ OC_Indicators_Chart.prototype.setFrame = function (n) {
     svg.select(".line")
         .duration(750)
         .attr("d", this.valueLine(newData));
+
+    var x = this.x;
+    var y = this.y;
+    this.svg_obj.selectAll("circle").remove();
+    this.svg_obj.selectAll("circle").data(newData).enter().append("circle").attr("r", "2.5").attr("cx", function (d, i) {
+        return x(i);
+    }).attr("cy", function (d) {
+        return y(d);
+    }).attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")").attr("class", "point");
+
     this.current_frame = n;
     return true;
 };
@@ -471,33 +509,42 @@ WI_Indicators_Chart.prototype.initiate = function () {
             return x(i);
         })
         .y(function (d) {
-            return y(parseInt(d));
+            return y(d);
         });
-
-    this.svg_obj.append("g")
-        .attr("transform",
-            "translate(" + this.margin.left + "," + this.margin.top + ")");
 
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_wi][this.indicators[this.current_indicator].name], function (d) {
-        return parseInt(d);
+        return d;
     })]);
 
     // Add the X Axis
     this.svg_obj.append("g")
-        .attr("transform", "translate(" + this.margin.left +"," + (height + this.margin.top) + ")")
+        .attr("transform", "translate(" + this.margin.left + "," + (height + this.margin.top) + ")")
         .attr("class", "x axis")
         .call(d3.axisBottom(x).ticks(this.total_frames));
 
     // Add the Y Axis
-    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left +", " + this.margin.top + ")")
+    this.svg_obj.append("g").attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")")
         .attr("class", "y axis")
         .call(d3.axisLeft(y));
 
     this.svg_obj.append("path")
         .attr("class", "line")
-        .attr("transform", "translate(" + this.margin.left +"," + this.margin.top + ")")
-        .attr("d", this.valueLine(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame)));
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueLine(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.selectAll(".point")
+        .data(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1), function (d) {
+            return d;
+        })
+        .enter().append("circle").attr("class", "point")
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("r", "2.5")
+        .attr("cx", function (d, i) {
+            return x(i);
+        }).attr("cy", function (d) {
+        return y(d);
+    }).attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")").attr("class", "point");
 
     this.x = x;
     this.y = y;
@@ -507,9 +554,9 @@ WI_Indicators_Chart.prototype.initiate = function () {
 
 WI_Indicators_Chart.prototype.setFrame = function (n) {
     if (n < 0 || n >= this.own_data[this.current_wi][this.indicators[this.current_indicator].name].length) return false;
-    // var y_key = this.current_indicator;
+    var target = this;
     this.y.domain([0, d3.max(this.own_data[this.current_wi][this.indicators[this.current_indicator].name], function (d) {
-        return parseInt(d);
+        return d;
     })]);
     var newData = this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, n + 1);
 
@@ -519,6 +566,29 @@ WI_Indicators_Chart.prototype.setFrame = function (n) {
     svg.select(".line")
         .duration(750)
         .attr("d", this.valueLine(newData));
+
+    var x = this.x;
+    var y = this.y;
+
+    var circles = this.svg_obj.selectAll("circle").data(newData);
+    // this.svg_obj.selectAll("circle").remove();
+    circles.exit().remove();
+    circles.enter().append("circle").merge(circles).attr("r", "2.5")
+        .attr("cx", function (d, i) {
+            return x(i);
+        }).attr("cy", function (d) {
+        return y(d);
+    }).attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")").attr("class", "point");
+
+    // this.svg_obj.selectAll("circle").data(newData).enter().append("circle").attr("class", "point")
+    //     .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+    //     .attr("r", "3.5")
+    //     .attr("cx", function (d, i) {
+    //         return x(i);
+    //     }).attr("cy", function (d) {
+    //     return y(d);
+    // }).attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
     this.current_frame = n;
     return true;
 };
