@@ -296,6 +296,188 @@ frames.push({
     "aggregating_indicators": {"wip": 7, "done": 15}
 });
 
+/************************ Frame 4 ************************/
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
+
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
+
+frames.push({
+    "organization_components": {
+        1: OrganizationComponent.clone(oc_a),
+        2: OrganizationComponent.clone(oc_b),
+        3: OrganizationComponent.clone(oc_c)
+    },
+    "work_items": {
+        101: Work_Item.clone(capability_a),
+        102: Work_Item.clone(capability_b),
+        151: Work_Item.clone(requirement_a),
+        152: Work_Item.clone(requirement_b),
+        153: Work_Item.clone(requirement_c),
+        201: Work_Item.clone(task_a),
+        202: Work_Item.clone(task_b),
+        203: Work_Item.clone(task_c),
+        204: Work_Item.clone(task_d)
+    },
+    "events": [event_d],
+    "aggregating_indicators": {"wip": 7, "done": 15}
+});
+
+/************************ Frame 5 ************************/
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
+
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
+
+frames.push({
+    "organization_components": {
+        1: OrganizationComponent.clone(oc_a),
+        2: OrganizationComponent.clone(oc_b),
+        3: OrganizationComponent.clone(oc_c)
+    },
+    "work_items": {
+        101: Work_Item.clone(capability_a),
+        102: Work_Item.clone(capability_b),
+        151: Work_Item.clone(requirement_a),
+        152: Work_Item.clone(requirement_b),
+        153: Work_Item.clone(requirement_c),
+        201: Work_Item.clone(task_a),
+        202: Work_Item.clone(task_b),
+        203: Work_Item.clone(task_c),
+        204: Work_Item.clone(task_d)
+    },
+    "events": [event_d],
+    "aggregating_indicators": {"wip": 7, "done": 15}
+});
+
+/************************ Frame 6 ************************/
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
+
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
+
+frames.push({
+    "organization_components": {
+        1: OrganizationComponent.clone(oc_a),
+        2: OrganizationComponent.clone(oc_b),
+        3: OrganizationComponent.clone(oc_c)
+    },
+    "work_items": {
+        101: Work_Item.clone(capability_a),
+        102: Work_Item.clone(capability_b),
+        151: Work_Item.clone(requirement_a),
+        152: Work_Item.clone(requirement_b),
+        153: Work_Item.clone(requirement_c),
+        201: Work_Item.clone(task_a),
+        202: Work_Item.clone(task_b),
+        203: Work_Item.clone(task_c),
+        204: Work_Item.clone(task_d)
+    },
+    "events": [event_d],
+    "aggregating_indicators": {"wip": 7, "done": 15}
+});
+
+/************************ Frame 7 ************************/
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
+
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
+
+frames.push({
+    "organization_components": {
+        1: OrganizationComponent.clone(oc_a),
+        2: OrganizationComponent.clone(oc_b),
+        3: OrganizationComponent.clone(oc_c)
+    },
+    "work_items": {
+        101: Work_Item.clone(capability_a),
+        102: Work_Item.clone(capability_b),
+        151: Work_Item.clone(requirement_a),
+        152: Work_Item.clone(requirement_b),
+        153: Work_Item.clone(requirement_c),
+        201: Work_Item.clone(task_a),
+        202: Work_Item.clone(task_b),
+        203: Work_Item.clone(task_c),
+        204: Work_Item.clone(task_d)
+    },
+    "events": [event_d],
+    "aggregating_indicators": {"wip": 7, "done": 15}
+});
+
+/************************ Frame 8 ************************/
+oc_a.indicators = {"wip": 4, "done": 9, "work load": 5};
+oc_b.indicators = {"wip": 1, "done": 10, "work load": 2};
+oc_c.indicators = {"wip": 2, "done": 5, "work load": 3};
+
+capability_a.indicators.completeness = 1;
+capability_b.indicators.completeness = 1;
+requirement_a.indicators.completeness = 0.99;
+requirement_b.indicators.completeness = 0.86;
+requirement_c.indicators.completeness = 0.70;
+task_a.indicators.completeness = 1;
+task_b.indicators.completeness = 1;
+task_c.indicators.completeness = 1;
+task_d.indicators.completeness = 0.9;
+
+frames.push({
+    "organization_components": {
+        1: OrganizationComponent.clone(oc_a),
+        2: OrganizationComponent.clone(oc_b),
+        3: OrganizationComponent.clone(oc_c)
+    },
+    "work_items": {
+        101: Work_Item.clone(capability_a),
+        102: Work_Item.clone(capability_b),
+        151: Work_Item.clone(requirement_a),
+        152: Work_Item.clone(requirement_b),
+        153: Work_Item.clone(requirement_c),
+        201: Work_Item.clone(task_a),
+        202: Work_Item.clone(task_b),
+        203: Work_Item.clone(task_c),
+        204: Work_Item.clone(task_d)
+    },
+    "events": [event_d],
+    "aggregating_indicators": {"wip": 7, "done": 15}
+});
+
+/************************ Frame Setting Over ************************/
+
 var basic_info = {
     "exp_name": "Test Exp Name"
 };

@@ -10,11 +10,12 @@
     <link href="simple_player.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="header">
+<div class="header">
     <div class="top-wrapper">
-        <div id="sys_logo">LOGO</div>
-        <div id="exp_name">lymari #1</div>
-        <div id="time_display">00:00:00 Tick:##</div>
+    <div>
+		<div id="sys_logo"><span>LOGO</span></div>
+		<div id="exp_name"><span>lymari #1</span></div>
+		<div id="time_display"><span>00:00:00 Tick:##</span></div>
         <div id="simulation_speed"></div>
         <div id="simulation_buttons_div">
             <button class="simulation-button" onclick="sim_player.setFrame(sim_player.current_frame - 1)">Prev</button>
@@ -23,18 +24,26 @@
             <button class="simulation-button" onclick="sim_player.stop()">Stop</button>
             <button class="simulation-button" onclick="sim_player.setFrame(sim_player.current_frame + 1)">Next</button>
         </div>
+		</div>
     </div>
 </div>
 <div class="top-wrapper">
     <div class="content_left">
-        <h3>Progress</h3>
-        <div id="progresses">
-            <!-- Here's Progress Chart -->
+        <div class="widget-header">
+            <h3 style="background-color: #efefef">Progress</h3>
+        </div>
+        <div class="widget-body">
+            <div id="progresses">
+                <!-- Here's Progress Chart -->
+            </div>
         </div>
     </div>
     <div class="content_right">
         <div class="content_up">
-            <div id="OCA"><h3>Organizational Component Activity</h3></div>
+            <div id="OCA">
+                <div class="widget-header"><h3>Organizational Component Activity</h3></div>
+				<div class="widget-body" style="height: 200px; background: #000000"></div>
+            </div>
             <div id="tabs">
                 <div class="tabbed">
                     <input name="tabbed" id="tab_org" type="radio">
@@ -79,20 +88,28 @@
         </div>
         <div id="other_diagrams">
             <div id="cumulative_flow_diagrams">
-                <h3>Cumulative Flow Diagrams</h3>
-                <div id="div_agg_indicators">
-					<select id="agg_select" size="10" style="width: 80px; height:200px; float: left;"></select>
-                    <svg id="agg_chart"></svg>
+                <div class="widget-header">
+                    <h3>Cumulative Flow Diagrams</h3>
                 </div>
-                <div id="div_oc_indicators_chart">
-                    <select id="oc_select" size="10" style="width: 80px; height:200px; float: left;"></select>
-                    <select id="oc_indicator_select" style="width: 80px; float: right;"></select>
-                    <svg id="oc_indicator_chart" style="width:395px; height: 180px"></svg>
+                <div class="widget-body">
+                    <div id="div_agg_indicators">
+                        <select id="agg_select" size="10" style="width: 80px; height:200px; float: left;"></select>
+                        <svg id="agg_chart"></svg>
+                    </div>
                 </div>
-                <div id="div_wi_indicators">
-                	<select id="wi_select" size="10" style="width: 80px; height:200px; float: left;"></select>
-                    <select id="wi_indicator_select" style="width: 80px; float: right;"></select>
-                    <svg id="wi_indicator_chart" style="width:395px; height: 180px"></svg>
+                <div class="widget-body">
+                    <div id="div_oc_indicators_chart">
+                        <select id="oc_select" size="10" style="width: 80px; height:200px; float: left;"></select>
+                        <select id="oc_indicator_select" style="width: 80px; float: right;"></select>
+                        <svg id="oc_indicator_chart" style="width:395px; height: 180px"></svg>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="div_wi_indicators">
+                        <select id="wi_select" size="10" style="width: 80px; height:200px; float: left;"></select>
+                        <select id="wi_indicator_select" style="width: 80px; float: right;"></select>
+                        <svg id="wi_indicator_chart" style="width:395px; height: 180px"></svg>
+                    </div>
                 </div>
             </div>
             <div id="other_graphs"></div>

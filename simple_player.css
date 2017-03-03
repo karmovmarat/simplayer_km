@@ -14,45 +14,80 @@ body {
     width: 1200px;
     margin: 0 auto;
     clear: both;
+	align-content: center;
 }
 
-#header {
+.widget-header{
+	    background-color: #efefef;
+	border-radius: 3px 3px 0 0;
+    min-height: 36px;
+    border: 1px solid #DDDDDD;
+	box-sizing: border-box;
+	font-size: 14px;
+    line-height: 20px;
+}
+
+.widget-header > h3 {
+    margin: 0;
+    padding: 8px 0 0 15px;
+    font-size: 16px;
+}
+
+.widget-body {
+	border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #ccc;
+    background-color: #fff;
+	margin: 0px 0px 2px 0px;
+}
+
+.header {
     height: 45px;
-    width: inherit;
-    background: #a3a3a3;
+	border-color: #101010;
+    background: #333333;
+	color:aliceblue;
     clear: both;
+	align-content: center;
+}
+
+.header > span {
+	margin: 0px 0 0 0;
+	line-height: 20px;
+	display: block;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #sys_logo {
-    /*height: 50px;*/
+float: left;
+	clear: both;
     width: 200px;
-    float: left;
-    margin: auto;
+    margin: 13px 0 0px 0px;
 }
 
 #exp_name {
-    /*height: 50px;*/
     width: 150px;
     float: left;
+	margin: 13px 20px 0 20px;
 }
 
 #time_display {
-    /*height: 65px;*/
+    margin: 13px 0 0px 20px;
     width: 150px;
     float: left;
 }
 
 #simulation_speed {
-    /*height: 65px;*/
+    margin: 13px 0 0px 0px;
     width: 150px;
     float: left;
 }
 
 #simulation_buttons_div {
-    /*height: 65px;*/
     width: 200px;
-    float: left;
-    align-content: center;
+    float: right;
+	margin: 5px 15px auto;
+	clear-after: both;
 }
 
 .simulation-button {
@@ -67,13 +102,9 @@ body {
 .content_left {
     width: 345px;
     float: left;
-    background-color: #d7d7d7;
+    background-color: #ffffff;
+	
     padding-right: 5px;
-}
-
-.content_left > h3 {
-    text-align: center;
-    margin: 0px;
 }
 
 .progress-chart {
@@ -88,8 +119,13 @@ body {
 .progress-bar {
     position: relative;
     height: 20px;
-    background-color: #ddd;
-    width: 150px;
+    background-color: #f7f7f7;
+	
+	background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+    background-repeat: repeat-x;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+	width: 200px;
     border-style: solid;
     border-width: 1px;
     border-color: black;
@@ -99,7 +135,11 @@ body {
 
 .progress-bar-fg {
     height: inherit;
-    background-color: #00ff51;
+	background-color: #9AD4EC;
+	animation: progress-bar-stripes 2s linear infinite;
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+	background-size: 40px 40px;
+	transition: width 0.6s ease;
     position: absolute;
 }
 
@@ -120,8 +160,19 @@ body {
     transform: translateY(-50%);
 }
 
-#progresses .capability {
+#progresses > .capability {
     height: 30px;
+    left: 5px;
+}
+
+#progresses > .requirement {
+    height: 20px;
+    left: 10px;
+}
+
+#progresses > .task {
+    height: 15px;
+    left: 15px;
 }
 
 /*
@@ -131,18 +182,17 @@ body {
 .content_right {
     width: 850px;
     float: left;
-    clear-after: both;
+/*    clear-after: both;*/
 }
 
 .content_right > .content_up {
-    height: 400px;
+    height: 300px;
 }
 
 #OCA {
     float: left;
     width: 445px;
     height: inherit;
-    background: grey;
 }
 
 #OCA > h3 {
@@ -151,17 +201,18 @@ body {
 }
 
 #tabs {
+	
     float: left;
     width: 395px;
     line-height: 1;
-    padding-left: 5px;
-    /*	background-color: #d7d7d7;*/
-    height: inherit;
+    margin-left: 5px;
+	background: none repeat scroll 0 0 #DDDDDD;
 }
 
 .tabbed {
     float: left;
     width: 100%;
+	border: 1px solid #ddd;
 }
 
 .tabbed > input {
@@ -172,19 +223,19 @@ body {
     float: left;
     box-sizing: border-box;
     margin: 0;
-    padding: 4px 2px 0px 0px;
+    padding: 9px 2px 0px 0px;
     overflow: hidden;
-    font-size: 11px;
-    font-weight: normal;
+    font-size: 14px;
+    font-weight:500;
 }
 
 .tabbed > input:first-child + section > h3 {
-    padding-left: 1em;
+    padding-left: 1px;
 }
 
 .tabbed > section > h3 > label {
     display: block;
-    padding: 5px 5px;
+    padding: 5px 10px 8px 5px;
     border: 1px solid #ddd;
     border-bottom: none;
     border-top-left-radius: 5px;
@@ -203,13 +254,13 @@ body {
     float: right;
     box-sizing: border-box;
     width: 100%;
-    margin: 22px 0 0 -100%;
-    padding: 5px 5px 5px 5px;
-    border: 1px solid #ddd;
+    margin: 35px 0 0 -100%;
+    padding: 1px 5px 5px 5px;
+    border: 1px 1px 1px 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.0625);
     background: #fff;
-    height: 379px;
+    height: 264px;
     overflow-y: scroll;
 }
 
@@ -229,7 +280,6 @@ body {
     /*    height: 400px;*/
     float: left;
     width: 495px;
-    background-color: #dddddd;
     margin-right: 5px;
     margin-top: 5px;
 }
@@ -250,21 +300,23 @@ svg .title {
 }
 
 path {
-    stroke: #1518f5;
-    stroke-width: 2;
     fill: none;
+    stroke: #42c1f7;
+    stroke-width: 2;
 }
 
 .axis path,
 .axis line {
     fill: none;
-    stroke: grey;
+    stroke: #aaaaaa;
     stroke-width: 1;
     shape-rendering: crispEdges;
 }
 
 .point {
-    stroke: #000000;
+	stroke:#ffffff;
+    fill: #42c1f7;
+	stroke-width: 1;
 }
 
 /*

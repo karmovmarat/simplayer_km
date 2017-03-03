@@ -36,7 +36,7 @@ function Progress_Chart(data, div_obj) {
         var frame = data.frames[i];
         for (var j in frame.work_items) {
             if (frame.work_items.hasOwnProperty(j)) {
-                f.push({
+                var cur_oc = {
                     "id": frame.work_items[j].id,
                     "type": frame.work_items[j].type,
                     "name": frame.work_items[j].name,
@@ -44,7 +44,11 @@ function Progress_Chart(data, div_obj) {
                     "children": new Object(frame.work_items[j].children),
                     "completeness": frame.work_items[j].indicators["completeness"],
                     "value": frame.work_items[j].indicators["value"]
-                });
+                };
+                f.push(cur_oc);
+                for(var c in cur_oc.children){
+
+                }
             } else {
                 console.log("Progress_Chart instantiated failed, unexpected data format.");
             }
@@ -71,7 +75,14 @@ Progress_Chart.prototype.setFrame = function (n) {
 
     var diventer = div.enter().append("div").attr("id", function (d) {
         return d.id;
-    }).attr("class", "progress-bar");
+    }).attr("class", function (d) {
+        if (d.type == "capability") return "progress-bar capability";
+        else if (d.type == "requirement") return "progress-bar requirement";
+        else if (d.type == "task") return "progress-bar task";
+        else {
+            console.log("unexpected work item type.");
+        }
+    });
 
     var a = diventer.append("div").attr("class", "progress-bar-fg").style("width", function (d) {
         return d.completeness * 100 + "%";
