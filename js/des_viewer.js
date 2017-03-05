@@ -97,17 +97,17 @@ Progress_Chart.prototype.setFrame = function (n) {
     var diventer = div.enter().append("div").attr("id", function (d) {
         return d.id;
     }).attr("class", function (d) {
-        if (d.type == "capability") return "progress-bar capability";
-        else if (d.type == "requirement") return "progress-bar requirement";
-        else if (d.type == "task") return "progress-bar task";
+        if (d.type == "capability") return "progress capability";
+        else if (d.type == "requirement") return "progress requirement";
+        else if (d.type == "task") return "progress task";
         else {
             console.log("unexpected work item type.");
         }
     });
 
-    var a = diventer.append("div").attr("class", "progress-bar-fg").style("width", function (d) {
+    var a = diventer.append("div").attr("class", "progress-bar progress-bar-info progress-bar-striped active").style("width", function (d) {
         return d.completeness * 100 + "%";
-    });
+    }).attr("roll", "progressbar").attr("aria-valuenow","45").attr("aria-valuemin","0").attr("aria-valuemax","100");
     a.exit().remove();
     diventer.append("span").attr("class", "progress-bar-name").text(function (d) {
         return d.name
@@ -132,7 +132,7 @@ function DSL_Chart(data, div_obj) {
     this.own_data = [];
     for (var i in data.frames) {
         var fra = [];
-        var cur = data.frames[i].events;
+        var cur = data.frames[i];
         for (var j in cur.events) {
             if (cur.events.hasOwnProperty(j)) {
                 fra.push({
