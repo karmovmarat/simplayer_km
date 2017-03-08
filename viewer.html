@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
-<head>
+<html lang="en" ng-app><head>
     <meta charset="UTF-8">
     <title>Simple</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
@@ -50,10 +49,49 @@
         </div>
         <div class="col-md-9" style="padding: 5px;">
             <div class="row" style="margin: 0px;">
+<!--
                 <div id="OCA" class="col-md-6" style="padding: 0px;">
                     <div class="panel panel-default">
                         <div class="panel-heading">Organizational Component Activity</div>
                         <div class="panel-body" style="background: #000000"></div>
+                    </div>
+                </div>
+-->
+               <div id="cumulative_flow_diagrams" class="col-md-6" style="padding: 0px;">
+                    <div class="row" style="padding: 0px;margin: 0px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Cumulative Flow Diagrams</div>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div id="div_agg_indicators">
+                                        <select id="agg_select" size="10"
+                                                style="width: 80px; height:200px; float: left;">
+                                        </select>
+                                        <svg id="agg_chart" style="height: 200px;"></svg>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div id="div_oc_indicators_chart">
+                                        <select id="oc_select" size="10"
+                                                style="width: 80px; height:200px; float: left;">
+                                        </select>
+                                        <select id="oc_indicator_select" style="width: 80px; float: right;">
+                                        </select>
+                                        <svg id="oc_indicator_chart" style="height: 180px"></svg>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div id="div_wi_indicators">
+                                        <select id="wi_select" size="10"
+                                                style="width: 80px; height:200px; float: left;">
+                                        </select>
+                                        <select id="wi_indicator_select" style="width: 80px; float: right;">
+                                        </select>
+                                        <svg id="wi_indicator_chart" style="height: 180px"></svg>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6" style="padding: 5px;">
@@ -85,6 +123,7 @@
                 </div>
             </div>
             <div id="other_diagrams" class="row" style="margin: 0px;">
+<!--
                 <div id="cumulative_flow_diagrams" class="col-md-6" style="padding: 0px;">
                     <div class="row" style="padding: 0px;margin: 0px;">
                         <div class="panel panel-default">
@@ -122,12 +161,15 @@
                         </div>
                     </div>
                 </div>
+-->
+<!--
                 <div id="other_graphs" class="col-md-6" style="margin: 0px;padding: 0px 5px;">
                     <div class="panel panel-default">
                         <div class="panel-heading">Graphs</div>
                         <div class="panel-body"></div>
                     </div>
                 </div>
+-->
             </div>
         </div>
     </div>
