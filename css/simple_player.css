@@ -87,12 +87,19 @@ svg .title {
 
 path {
     fill: none;
-    stroke: #42c1f7;
+    /*stroke: #42c1f7;*/
+    /*stroke: #2a7bf7;*/
+    stroke: #267aa3;
     stroke-width: 2;
 }
 
+.area {
+    fill: #5bc0de;
+    stroke-width: 0;
+}
+
 .axis path,
-.axis line {
+.axis line{
     fill: none;
     stroke: #aaaaaa;
     stroke-width: 1;

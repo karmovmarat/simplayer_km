@@ -11,6 +11,7 @@ function Base_Chart(data, div_obj) {
     this.orginal_data = data;
     this.div_obj = div_obj;
     this.current_frame = -1;
+    this.animation_duration = 0;
 }
 Base_Chart.prototype.initiate = function () {
     alert("initiate not implemented");
@@ -47,8 +48,9 @@ function Progress_Chart(data, div_obj) {
                         "value": frame.work_items[j].indicators["value"]
                     };
                     f.push(cur_wi);
-                    for(var r in cur_wi.children){
-                        var cur_re = {"id": frame.work_items[cur_wi.children[r]].id,
+                    for (var r in cur_wi.children) {
+                        var cur_re = {
+                            "id": frame.work_items[cur_wi.children[r]].id,
                             "type": frame.work_items[cur_wi.children[r]].type,
                             "name": frame.work_items[cur_wi.children[r]].name,
                             "oc": frame.work_items[cur_wi.children[r]].assigned_to,
@@ -57,8 +59,9 @@ function Progress_Chart(data, div_obj) {
                             "value": frame.work_items[cur_wi.children[r]].indicators["value"]
                         };
                         f.push(cur_re);
-                        for(var t in cur_re.children){
-                            var cur_ta = {"id": frame.work_items[cur_re.children[t]].id,
+                        for (var t in cur_re.children) {
+                            var cur_ta = {
+                                "id": frame.work_items[cur_re.children[t]].id,
                                 "type": frame.work_items[cur_re.children[t]].type,
                                 "name": frame.work_items[cur_re.children[t]].name,
                                 "oc": frame.work_items[cur_re.children[t]].assigned_to,
@@ -107,7 +110,7 @@ Progress_Chart.prototype.setFrame = function (n) {
 
     var a = diventer.append("div").attr("class", "progress-bar progress-bar-info progress-bar-striped active").style("width", function (d) {
         return d.completeness * 100 + "%";
-    }).attr("roll", "progressbar").attr("aria-valuenow","45").attr("aria-valuemin","0").attr("aria-valuemax","100");
+    }).attr("roll", "progressbar").attr("aria-valuenow", "45").attr("aria-valuemin", "0").attr("aria-valuemax", "100");
     a.exit().remove();
     diventer.append("span").attr("class", "progress-bar-name").text(function (d) {
         return d.name
@@ -233,8 +236,15 @@ Aggregating_Indicators.prototype.initiate = function () {
     this.valueLine = d3.line()
         .x(function (d) {
             return x(d[0]);
-        })
-        .y(function (d) {
+        }).y(function (d) {
+            return y(d[1]);
+        });
+
+    this.valueArea = d3.area()
+        .x(function (d) {
+            return x(d[0]);
+        }).y0(height)
+        .y1(function (d) {
             return y(d[1]);
         });
 
@@ -258,10 +268,16 @@ Aggregating_Indicators.prototype.initiate = function () {
         .attr("class", "y axis")
         .call(d3.axisLeft(y));
 
+    // Add path
     this.svg_obj.append("path")
         .attr("class", "line")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
         .attr("d", this.valueLine(this.own_data[this.current_indicator].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.append("path")
+        .attr("class", "area")
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueArea(this.own_data[this.current_indicator].slice(0, this.current_frame + 1)));
 
     this.svg_obj.selectAll("circle").data(this.own_data[this.current_indicator].slice(0, this.current_frame + 1))
         .enter().append("circle").attr("r", "2.5").attr("cx", function (d) {
@@ -269,6 +285,7 @@ Aggregating_Indicators.prototype.initiate = function () {
     }).attr("cy", function (d) {
         return y(d[1]);
     }).attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")").attr("class", "point");
+
 
     this.x = x;
     this.y = y;
@@ -284,10 +301,14 @@ Aggregating_Indicators.prototype.setFrame = function (n) {
 
     var svg = this.svg_obj.transition();
 
-    svg.select(".y.axis").duration(750).call(d3.axisLeft(this.y));
+    svg.select(".y.axis").duration(this.animation_duration).call(d3.axisLeft(this.y));
     svg.select(".line")
-        .duration(750)
+        .duration(this.animation_duration)
         .attr("d", this.valueLine(newData));
+
+    svg.select(".area")
+        .duration(this.animation_duration)
+        .attr("d", this.valueArea(newData));
 
     var x = this.x;
     var y = this.y;
@@ -300,6 +321,8 @@ Aggregating_Indicators.prototype.setFrame = function (n) {
             return y(d[1]);
         }).attr("transform", "translate(" + this.margin.left + ", " + this.margin.top + ")")
         .attr("class", "point");
+
+
     this.current_frame = n;
     return true;
 };
@@ -391,6 +414,15 @@ OC_Indicators_Chart.prototype.initiate = function () {
             return y(d);
         });
 
+    this.valueArea = d3.area()
+        .x(function (d, i) {
+            return x(i);
+        })
+        .y0(height)
+        .y1(function (d) {
+            return y(d);
+        });
+
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_oc][this.indicators[this.current_indicator].name], function (d) {
         return d;
@@ -411,6 +443,11 @@ OC_Indicators_Chart.prototype.initiate = function () {
         .attr("class", "line")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
         .attr("d", this.valueLine(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.append("path")
+        .attr("class", "area")
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueArea(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
 
     this.svg_obj.selectAll(".point")
         .data(this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1), function (d) {
@@ -440,11 +477,11 @@ OC_Indicators_Chart.prototype.setFrame = function (n) {
     var newData = this.own_data[this.current_oc][this.indicators[this.current_indicator].name].slice(0, n + 1);
 
     var svg = this.svg_obj.transition();
+    // update title, y_axis, line and area
     svg.select(".title").text(this.indicators[this.current_indicator].title);
-    svg.select(".y.axis").duration(750).call(d3.axisLeft(this.y));
-    svg.select(".line")
-        .duration(750)
-        .attr("d", this.valueLine(newData));
+    svg.select(".y.axis").duration(this.animation_duration).call(d3.axisLeft(this.y));
+    svg.select(".line").duration(this.animation_duration).attr("d", this.valueLine(newData));
+    svg.select(".area").duration(this.animation_duration).attr("d", this.valueArea(newData));
 
     var x = this.x;
     var y = this.y;
@@ -545,6 +582,11 @@ WI_Indicators_Chart.prototype.initiate = function () {
             return y(d);
         });
 
+    this.valueArea = d3.area()
+        .x(function (d,i){return x(i);})
+        .y0(height)
+        .y1(function (d){return y(d);});
+
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_wi][this.indicators[this.current_indicator].name], function (d) {
         return d;
@@ -565,6 +607,11 @@ WI_Indicators_Chart.prototype.initiate = function () {
         .attr("class", "line")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
         .attr("d", this.valueLine(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
+
+    this.svg_obj.append("path")
+        .attr("class", "area")
+        .attr("transform", "translate (" + this.margin.left + "," + this.margin.top + ")")
+        .attr("d", this.valueArea(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1)));
 
     this.svg_obj.selectAll(".point")
         .data(this.own_data[this.current_wi][this.indicators[this.current_indicator].name].slice(0, this.current_frame + 1), function (d) {
@@ -595,10 +642,13 @@ WI_Indicators_Chart.prototype.setFrame = function (n) {
 
     var svg = this.svg_obj.transition();
     svg.select(".title").text(this.indicators[this.current_indicator].title);
-    svg.select(".y.axis").duration(750).call(d3.axisLeft(this.y));
+    svg.select(".y.axis").duration(this.animation_duration).call(d3.axisLeft(this.y));
     svg.select(".line")
-        .duration(750)
+        .duration(this.animation_duration)
         .attr("d", this.valueLine(newData));
+    svg.select(".area")
+        .duration(this.animation_duration)
+        .attr("d", this.valueArea(newData));
 
     var x = this.x;
     var y = this.y;
