@@ -2,12 +2,24 @@
  * Created by ZiyuCheng on 2/12/17.
  */
 
-function Simple_Player(data, duration) {
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
+
+function Simple_Player(data, duration, tick_tag) {
     this.charts = [];
     this.current_frame = 0;
     this.max_frame = data.frames.length;
     this.duration = duration * 1000;
     this.play_status = "stop";
+    this.tick_obj = d3.select(tick_tag);
+    this.tick_fmt = String('Tick: {0} (1 tick = {1})');
+    this.tick_unit = '1 day';
 }
 
 Simple_Player.prototype.initiate = function () {
@@ -16,6 +28,8 @@ Simple_Player.prototype.initiate = function () {
             console.log(this.charts[i] + " initiate failed.")
         }
     }
+
+    this.tick_obj.text(this.tick_fmt.format(this.current_frame, this.tick_unit));
     return true;
 };
 
@@ -25,6 +39,7 @@ Simple_Player.prototype.setFrame = function (n) {
             this.charts[i].setFrame(n);
         }
         this.current_frame = n;
+        this.tick_obj.text(this.tick_fmt.format(this.current_frame, this.tick_unit));
         return true;
     }
     console.log(n + " out of range(0 - " + this.max_frame + ")");
@@ -79,7 +94,7 @@ var data = d3.json("js/data-example.json", function (error, data) {
 
     d3.select("#exp_name").text(data.basic_info.exp_name);
 
-    this.sim_player = new Simple_Player(data, 1);
+    this.sim_player = new Simple_Player(data, 1, "#time_display");
 
     // add charts and register below.
 

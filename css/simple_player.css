@@ -1,3 +1,7 @@
+#header {
+    background: linear-gradient(to right, #85b2d3 16%, #ffffff 62%);
+}
+
 body {
     min-height: 2000px;
     padding-top: 55px;
@@ -12,23 +16,23 @@ body {
 }
 
 #exp_name {
-/*    width: 150px;*/
-/*    float: left;*/
+    /*    width: 150px;*/
+    /*    float: left;*/
     margin: 13px 20px 0 20px;
     color: aliceblue;
 }
 
 #time_display {
     margin: 13px 0 0px 20px;
-/*    width: 150px;*/
-/*    float: left;*/
+    /*    width: 150px;*/
+    /*    float: left;*/
     color: aliceblue;
 }
 
 #simulation_speed {
     margin: 13px 0 0px 0px;
-/*    width: 150px;*/
-/*    float: left;*/
+    /*    width: 150px;*/
+    /*    float: left;*/
     color: aliceblue;
 }
 
@@ -99,7 +103,7 @@ path {
 }
 
 .axis path,
-.axis line{
+.axis line {
     fill: none;
     stroke: #aaaaaa;
     stroke-width: 1;
