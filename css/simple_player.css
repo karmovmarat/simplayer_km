@@ -137,6 +137,16 @@ path {
     stroke-width: 1;
 }
 
+.group-tick line {
+    stroke: #000;
+}
+
+.ribbons {
+    fill-opacity: 0.67;
+}
+
+
+
 /*
     Other Graphs
  */

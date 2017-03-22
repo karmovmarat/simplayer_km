@@ -127,6 +127,177 @@ Progress_Chart.prototype.setFrame = function (n) {
 };
 
 /*
+ *  OCA Chart
+ */
+function OCA_Chart(data, div_obj) {
+    Base_Chart.call(this, data, div_obj);
+    this.current_frame = 0;
+    this.oc_list = [];
+    this.oc_dict = {};
+    this.records = [];
+    // assuming each frame has complete organization components information
+    for (var i in data.frames[0].organization_components) {
+        var cur_oc = data.frames[0].organization_components[i];
+        this.oc_list.push({
+            "name": cur_oc.name,
+            "id": cur_oc.id,
+            "description": cur_oc.description,
+            "index": i
+        })
+        this.oc_dict[cur_oc.id] = this.oc_list[i];
+    }
+
+    for (var i in data.frames) {
+        var cur_frame = data.frames[i];
+        var fra = [];
+        for (var j in cur_frame.events) {
+            var cur_eve = cur_frame.events[j];
+            fra.push({
+                "from": cur_eve.src_oc_id,
+                "to": cur_eve.dst_oc_id,
+                "type": cur_eve.type
+            });
+        }
+        this.records.push(fra);
+    }
+    if (debug) {
+        console.log("OCA_Chart instantiated successfully.");
+    }
+}
+
+OCA_Chart.prototype.initiate = function () {
+    //Returns an event handler for fading a given chord group.
+    this.fade = function (opacity) {
+        return function (d, i) {
+            svg.selectAll("path.chord")
+                .filter(function (d) {
+                    return d.source.index != i && d.target.index != i;
+                })
+                .transition()
+                .style("opacity", opacity);
+        };
+    }//fade
+    this.margin = {top: 30, right: 30, bottom: 10, left: 10};
+    this.width = parseInt(this.div_obj.style("width"));
+    this.height = parseInt(this.div_obj.style("height"));
+    this.svg_obj = this.div_obj.append("g").attr("transform", "translate(" + (this.width / 2 + this.margin.left) + ", " + (this.height / 2 + this.margin.top) + ")");
+
+    var names = this.oc_list.map(function (d) {
+            return d.name;
+        }),
+        colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"],
+        opacityDefault = 0.8;
+
+
+    var matrix = [
+        [0, 1, 1],
+        [1, 0, 1],
+        [1, 1, 0]
+    ];
+
+    var outerRadius = Math.min(parseInt(this.width), parseInt(this.height)) / 2 - 30,
+        innerRadius = outerRadius - 30;
+
+    var chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
+
+    var ribbon = d3.ribbon().radius(innerRadius);
+    var color = d3.scaleOrdinal().domain(d3.range(3)).range(["#301E1E", "#083E77", "#342350"]);
+    var arc = d3.arc()
+        .innerRadius(innerRadius * 1.01)
+        .outerRadius(outerRadius);
+
+    var g = this.svg_obj.append("g").datum(chord(matrix));
+
+    var group = g.append("g")
+        .attr("class", "groups")
+        .selectAll("g")
+        .data(function (chords) {
+            return chords.groups;
+        })
+        .enter().append("g");
+
+    group.append("path")
+        .style("fill", function (d) {
+            return color(d.index);
+        })
+        .style("stroke", function (d) {
+            return d3.rgb(color(d.index)).darker();
+        })
+        .attr("d", arc);
+
+    group.append("text").each(function (d) {
+        d.angle = (d.startAngle + d.endAngle) / 2;
+    })
+        .attr("dy", "0.35em")
+        .attr("class", "titles")
+        .attr("text-anchor", function (d) {
+            return d.angle > Math.PI ? "end" : null;
+        })
+        .attr("transform", function (d) {
+            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                + "translate(" + (outerRadius + 10) + ")"
+                + (d.angle > Math.PI ? "rotate(180)" : "");
+        })
+        .text(function (d, i) {
+            return names[i]
+        });
+
+
+    g.append("g")
+        .attr("class", "ribbons")
+        .selectAll("path")
+        .data(function (chords) {
+            return chords;
+        })
+        .enter().append("path")
+        .attr("d", ribbon)
+        .style("fill", function (d) {
+            return color(d.target.index);
+        })
+        .style("stroke", function (d) {
+            return d3.rgb(color(d.target.index)).darker();
+        });
+
+    /*
+     this.translate = {x: this.margin.left, y: this.margin.top};
+     deltX = this.width / this.oc_list.length;
+     deltY = this.height / this.oc_list.length;
+     for (var i in this.oc_list) {
+     this.oc_list[i].x = i * deltX;
+     this.oc_list[i].y = i * deltY;
+     }
+
+     var width = parseInt(this.width) - this.margin.left - this.margin.right,
+     height = parseInt(this.height) - this.margin.top - this.margin.bottom;
+
+     // set the ranges
+     var x = d3.scalePoint().range([0, width]).domain(names);
+     var y = d3.scalePoint().range([height, 0]).domain(names);
+
+     // Add the X Axis
+     this.div_obj.append("g")
+     .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
+     .attr("class", "x axis")
+     .call(d3.axisTop(x));
+
+     // Add the Y Axis
+     this.div_obj.append("g").attr("transform", "translate(" + (this.margin.left + width) + ", " + this.margin.top + ")")
+     .attr("class", "y axis")
+     .call(d3.axisRight(y));
+     */
+
+
+    this.setFrame(0);
+    return true;
+};
+
+OCA_Chart.prototype.setFrame = function (n) {
+
+
+};
+
+
+/*
  *  DSL Chart
  */
 function DSL_Chart(data, div_obj) {
@@ -583,9 +754,13 @@ WI_Indicators_Chart.prototype.initiate = function () {
         });
 
     this.valueArea = d3.area()
-        .x(function (d,i){return x(i);})
+        .x(function (d, i) {
+            return x(i);
+        })
         .y0(height)
-        .y1(function (d){return y(d);});
+        .y1(function (d) {
+            return y(d);
+        });
 
     x.domain([0, this.total_frames - 1]);
     y.domain([0, d3.max(this.own_data[this.current_wi][this.indicators[this.current_indicator].name], function (d) {

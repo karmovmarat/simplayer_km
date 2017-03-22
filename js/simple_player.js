@@ -102,6 +102,9 @@ var data = d3.json("js/data-example.json", function (error, data) {
     var progress_chart = new Progress_Chart(data, d3.select("#progresses"));
     sim_player.addChart(progress_chart);
 
+
+
+
     // DSL chart
     var dsl_chart = new DSL_Chart(data, d3.select("#dsl_content"));
     sim_player.addChart(dsl_chart);
@@ -119,6 +122,10 @@ var data = d3.json("js/data-example.json", function (error, data) {
 
     // initiate all charts
     sim_player.initiate();
+
+    // OCA chart
+    var oca_chart = new OCA_Chart(data, d3.select("#oca_svg"));
+    oca_chart.initiate();
 });
 
 
