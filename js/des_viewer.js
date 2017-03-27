@@ -177,7 +177,7 @@ OCA_Chart.prototype.initiate = function () {
                 .style("opacity", opacity);
         };
     }//fade
-    this.margin = {top: 30, right: 30, bottom: 10, left: 10};
+    this.margin = {top: 10, right: 10, bottom: 10, left: 10};
     this.width = parseInt(this.div_obj.style("width"));
     this.height = parseInt(this.div_obj.style("height"));
     this.svg_obj = this.div_obj.append("g").attr("transform", "translate(" + (this.width / 2 + this.margin.left) + ", " + (this.height / 2 + this.margin.top) + ")");
@@ -187,21 +187,35 @@ OCA_Chart.prototype.initiate = function () {
         }),
         colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"],
         opacityDefault = 0.8;
-
-
+    names.push("test0");
+    names.push("test2");
+    names.push("test1");
+    // var matrix = [
+    //     [-1, 1, 2, 3],
+    //     [0, -1, 2, 3],
+    //     [0, 1, -1, 3],
+    //     [0, 1, 2, -1]
+    // ];
     var matrix = [
-        [0, 1, 1],
-        [1, 0, 1],
-        [1, 1, 0]
+        [0, 1, 1, 1, 1, 1],
+        [1, 0, 1, 1, 1, 1],
+        [1, 1, 0, 1, 1, 1],
+        [1, 1, 1, 0, 1, 1],
+        [1, 1, 1, 1, 0, 1],
+        [1, 1, 1, 1, 1, 0],
     ];
 
     var outerRadius = Math.min(parseInt(this.width), parseInt(this.height)) / 2 - 30,
         innerRadius = outerRadius - 30;
 
-    var chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
+    var chord = customChord().padAngle(0.05).sortSubgroups(d3.ascending());
 
-    var ribbon = d3.ribbon().radius(innerRadius);
-    var color = d3.scaleOrdinal().domain(d3.range(3)).range(["#301E1E", "#083E77", "#342350"]);
+    var ribbon = d3.ribbon().radius(innerRadius * 0.98);
+
+    var n = matrix.length;
+    names = names.slice(0, n);
+
+    var color = d3.scaleOrdinal().domain(d3.range(n)).range(["#389c46", "#083E77", "#342350", "#8B161C", "#DF7C00", "#567235"].slice(0, n));
     var arc = d3.arc()
         .innerRadius(innerRadius * 1.01)
         .outerRadius(outerRadius);
@@ -222,27 +236,29 @@ OCA_Chart.prototype.initiate = function () {
         })
         .style("stroke", function (d) {
             return d3.rgb(color(d.index)).darker();
-        })
-        .attr("d", arc);
+        }).style("opacity", 0.9)
+        .attr("d", arc)
+        .attr("id", function (d, i) {
+            return "oc" + i;
+        });
 
+    // text
     group.append("text").each(function (d) {
         d.angle = (d.startAngle + d.endAngle) / 2;
-    })
-        .attr("dy", "0.35em")
+    }).attr("dx", 10)
+        .attr("dy", -2)
+        .append("textPath")
         .attr("class", "titles")
-        .attr("text-anchor", function (d) {
-            return d.angle > Math.PI ? "end" : null;
-        })
-        .attr("transform", function (d) {
-            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-                + "translate(" + (outerRadius + 10) + ")"
-                + (d.angle > Math.PI ? "rotate(180)" : "");
+        .attr("startOffset", "25%")
+        .style("text-anchor", "middle")
+        .attr("xlink:href", function (d) {
+            return "#oc" + d.index;
         })
         .text(function (d, i) {
             return names[i]
         });
 
-
+    // ribbons
     g.append("g")
         .attr("class", "ribbons")
         .selectAll("path")
@@ -251,12 +267,13 @@ OCA_Chart.prototype.initiate = function () {
         })
         .enter().append("path")
         .attr("d", ribbon)
+        .attr("marker-end", "url(#arrow)")
         .style("fill", function (d) {
             return color(d.target.index);
         })
         .style("stroke", function (d) {
             return d3.rgb(color(d.target.index)).darker();
-        });
+        }).style("opacity", 0.3);
 
     /*
      this.translate = {x: this.margin.left, y: this.margin.top};
@@ -849,4 +866,135 @@ WI_Indicators_Chart.prototype.setFrame = function (n) {
 
     this.current_frame = n;
     return true;
+};
+
+/*********** Util ***********/
+
+var customChord = function () {
+    var padAngle = 0,
+        sortGroups = null,
+        sortSubgroups = null,
+        sortChords = null;
+
+    function customChord(matrix) {
+        var n = matrix.length,
+            groupSums = [],
+            groupIndex = sequence(n),
+            subgroupIndex = [],
+            chords = [],
+            groups = chords.groups = new Array(n),
+            subgroups = new Array(n * n),
+            k,
+            x,
+            x0,
+            dx,
+            i,
+            j;
+
+        var numSeq;
+
+        // Compute the sum.
+        k = 0, i = -1;
+        while (++i < n) {
+            x = 0, j = -1;
+            numSeq = [];
+            while (++j < n) {
+                x += matrix[i][j];
+                // if (matrix[i][j] != 0) x = x + 2;
+            }
+            groupSums.push(x);
+
+            for (var m = 0; m < n; m++) {
+                numSeq[m] = (n + (i - 1) - m) % n;
+            }
+            subgroupIndex.push(numSeq);
+            k += x;
+        }//while
+
+
+        // Convert the sum to scaling factor for [0, 2pi].
+        // TODO Allow start and end angle to be specified?
+        // TODO Allow padding to be specified as percentage?
+        k = Math.max(0, Math.PI * 2 - padAngle * n) / k;
+        dx = k ? padAngle : Math.PI * 2 / n;
+
+        // Compute the start and end angle for each group and subgroup.
+        // Note: Opera has a bug reordering object literal properties!
+        x = 0, i = -1;
+        while (++i < n) {
+            x0 = x, j = -1;
+            while (++j < n) {
+                var di = groupIndex[i],
+                    dj = subgroupIndex[di][j],
+                    v = matrix[di][dj],
+                    a0 = x,
+                    a1 = x += v * k;
+                subgroups[dj * n + di] = {
+                    index: di,
+                    subindex: dj,
+                    startAngle: a0,
+                    endAngle: a1,
+                    value: v
+                };
+            }
+            groups[di] = {
+                index: di,
+                startAngle: x0,
+                endAngle: x,
+                value: (x - x0) / k
+            };
+            x += dx;
+        }
+
+        // Generate chords for each (non-empty) subgroup-subgroup link.
+        i = -1;
+        while (++i < n) {
+            // j = i - 1;
+            j = -1;
+            while (++j < n) {
+                var source = subgroups[j * n + i],
+                    target = subgroups[i * n + j];
+                if (source.value || target.value) {
+                    // chords.push(source.value < target.value
+                    //     ? {source: target, target: source}
+                    //     : {source: source, target: target});
+                    chords.push({source: source, target: target});
+                }
+            }
+        }
+
+        return sortChords ? chords.sort(sortChords) : chords;
+    }
+
+    customChord.padAngle = function (_) {
+        return arguments.length ? (padAngle = Math.max(0, _), customChord) : padAngle;
+    };
+
+    customChord.sortGroups = function (_) {
+        return arguments.length ? (sortGroups = _, customChord) : sortGroups;
+    };
+
+    customChord.sortSubgroups = function (_) {
+        return arguments.length ? (sortSubgroups = _, customChord) : sortSubgroups;
+    };
+
+    customChord.sortChords = function (_) {
+        return arguments.length ? (_ == null ? sortChords = null : (sortChords = compareValue(_))._ = _, customChord) : sortChords && sortChords._;
+    };
+
+    return customChord;
+};
+
+var sequence = function (start, stop, step) {
+    start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
+
+    var i = -1,
+        n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
+        range = new Array(n);
+
+    while (++i < n) {
+        range[i] = start + i * step;
+    }
+
+    return range;
 };
