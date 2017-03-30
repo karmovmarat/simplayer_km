@@ -1,5 +1,6 @@
-/**
+/** 
  * Created by ZiyuCheng on 2/12/17.
+ /Modified by Karmovmarat on 3/29/17.
  */
 
 String.prototype.format = function() {
@@ -87,10 +88,62 @@ Simple_Player.prototype.stop = function () {
     this.setFrame(0);
     this.play_status = "stop";
 };
+//функ­ция получения файла с файловой системы из элемента input type=file
+var adresDataSourse = "js/data-example.json";//"js/data-example.json";//added variable sourse Data(no HardCode)
+ function onFilesSelect(e) {
+        // получаем объект FileList
+        var files, //массив элементов (файлов) из FileList
+            file, //элемент (файл) из массива files
+            fr; //экземпляр типа FileReader
+        files = e.target.files;
+        // объект file из FileList'a
+        file = files[0];
+        fr = new FileReader();
+        // считываем его как текст (в кодировке UTF-8 по умолчанию) 
+        // как только файл загружен
+        fr.onload = (function(file) {
+            return function(e) {
+                //отменяем действие по умолчанию
+                e.preventDefault();
+                //в переменную пишем прочтенный файл (в виде строки)
+                //var toDosTemp = e.target.result;
+                //проверяем является ли toDosTemp массивом
+            
+                //или так, в переменную пишем прочтенный файл (в виде строки)
+                 adresDataSourse = "800";//e.target.result;//fr.result; fr.readAsDataURL(file)
+                       //return adresDataSourse;
+            }
+        })(file);
+       // fr.readAsDataURL(file);
+       adresDataSourse = "fr.readAsDataURL(file)";//fr.name;
+        alert("вызов обработчика " + adresDataSourse); 
+    };
+      /////////////////////////////////////////////////////
+    //добавляем элемент input type=file на страницу
+//added Element [input type=file] on page
 
+
+    var $inputTypeFile;
+    $inputTypeFile = $("<input>").attr("type", "file");
+    $("div .col-md-3").append($inputTypeFile);
+    ////////////////////
+    // проверяем поддерживает ли браузер file API
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        // если да, то как только страница загрузится
+        onload = function() {
+                // вешаем обработчик события, срабатывающий при изменении input'а
+                $("div .col-md-3 input[type='file']").on("change", onFilesSelect, false);
+                // document.querySelector('input').addEventListener('change', onFilesSelect, false);
+                 alert("загрузка обработчика " + adresDataSourse); 
+            }
+            // если нет, то предупреждаем, что демо работать не будет
+    } else {
+        alert('К сожалению ваш браузер не поддерживает file API');
+    };
+    /////////////////////////////////////////////////////
 var sim_player;
 
-var data = d3.json("js/data-example.json", function (error, data) {
+var data = d3.json(adresDataSourse, function (error, data) {
 
     d3.select("#exp_name").text(data.basic_info.exp_name);
 
