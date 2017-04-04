@@ -88,10 +88,11 @@ Simple_Player.prototype.stop = function() {
     this.setFrame(0);
     this.play_status = "stop";
 };
-//функ­ция onFilesSelect получения файла с файловой системы из 
-//элемента input type=file
+
+/*
+//функ­ция получения файла с файловой системы из элемента input type=file
+var adresDataSourse; //"js/data-example.json";//added variable sourse Data(no HardCode)
 function onFilesSelect(e) {
-    alert("1_onFilesSelect");
     // получаем объект FileList
     var files, //массив элементов (файлов) из FileList
         file, //элемент (файл) из массива files
@@ -99,90 +100,59 @@ function onFilesSelect(e) {
     files = e.target.files;
     // объект file из FileList'a
     file = files[0];
-    if (/application.json/.test(file.type)) {
-        // узнаём информацию о типе файла, если JSON то продолжаем
-        fr = new FileReader();
-        // считываем его как текст (в кодировке UTF-8 по умолчанию) 
-        fr.readAsText(file);
-        fr.onerror = function() {
-            //не удалось прочитать файл
-            console.log("не могу прочитать файл " + fr.error.code);
-        };
-        // как только файл загружен
-        fr.onload = function(e) {
-            //в переменную пишем прочтенный файл (в виде строки)
-            var objTemp = e.target.result;
-            //проверяем является ли toDosTemp массивом
-            console.log(Array.isArray(objTemp));
-            //или так, в переменную пишем прочтенный файл (в виде строки)
-            var x = fr.result;
-            console.log("x" + x);
-            //парсим полученную строку, в массив объектов
-
-            addedObjectData_f = JSON.parse(objTemp);
-            console.log(addedObjectData_f);
-            //про­ве­ря­ем, яв­ля­ет­ся ли объ­ект xArray по­доб­ным мас­си­ву:
-            // console.log(isArrayLike(addedObjectData_f));
-            //вызовем загрузку JSON из файла
-            addMyObject(addedObjectData_f);
-            //и отключим кнопку выбора файла
-            $("div .col-md-3 input[type='file']").prop("disabled", true);
-            console.log($("div .col-md-3 input[type='file']").prop("disabled"));
-            // $("div .col-md-3").append($inputTypeFile);
-            //$("div .col-md-3").append($inputTypeFile);
-        };
-    } else {
-        alert("выберите другой тип файла");
-        $("div .col-md-3 input[type='file']").prop("disabled", true);
-        return;
+    fr = new FileReader();
+    // считываем его как текст (в кодировке UTF-8 по умолчанию) 
+    fr.readAsText(file);
+    fr.onerror = function() {
+        //не удалось прочитать файл
+        console.log("не могу прочитать файл " + fr.error.code);
+    };
+    fr.onload = function() {
 
     };
+    // как только файл загружен
+    fr.onload = (function(file) {
+        return function(e) {
+            //отменяем действие по умолчанию
+            // e.preventDefault();
+            //в переменную пишем прочтенный файл (в виде строки)
+            //var toDosTemp = e.target.result;
+            //проверяем является ли toDosTemp массивом
+
+            //или так, в переменную пишем прочтенный файл (в виде строки)
+            adresDataSourse = "800"; //e.target.result;//fr.result; fr.readAsDataURL(file)
+            //return adresDataSourse;
+        };
+    })(file);
+    // fr.readAsDataURL(file);
+    adresDataSourse = fr.readAsDataURL(file); //fr.readAsDataURL(file);//fr.name;
+    alert("вызов обработчика " + adresDataSourse);
 };
 /////////////////////////////////////////////////////
-//добавим форму
-var $formIn = $("<form>").attr("name", "formInLocal").attr("id", "formIL");
-//присоединим форму к ДИВ блоку
-$("div .col-md-3").append($formIn);
 //добавляем элемент input type=file на страницу
 //added Element [input type=file] on page
-var $inputTypeFile;
-$inputTypeFile = $("<input>").attr("type", "file").attr("accept", "application/json");
-//присоединим к форме inputTypeFile
-$("div .col-md-3 form").append($inputTypeFile);
-//добавим кнопку reset
-var $inputTypeReset;
-$inputTypeReset = $("<input>").attr("type", "reset").attr("name",
-    "local_F").attr("value", "CLEAR").attr("id", "formILReset");
-var $labelTypeButton;
-var $labelTypeButton = $("<label>").attr("for", "local_F").text("загрузить файл   ");
-//присоединим к форме labelTypeButton и кнопку inputTypeReset
-$("div .col-md-3 form").append($labelTypeButton).append($inputTypeReset);
 
-var addedObjectData_f; //переменная для кнопки (инпут тип)
-var addedObjectData = objDataJson;
-var addedObjectData_2 = objDataJson_2;
+var $inputTypeFile;
+$inputTypeFile = $("<input>").attr("type", "file");
+$("div .col-md-3").append($inputTypeFile);
+////////////////////
+*/
+
 var $testLabel_1 = $("<label>").attr("for", "testButton").text("загрузка");
 var $testButton_1 = $("<input>").attr("type",
-    "Button").attr("name",
-    "testButton").attr("value",
-    "загруз_к_а").attr("id", "42");
+ "Button").attr("name",
+  "testButton").attr("value",
+   "загруз_к_а").attr("id", "42");
 //$testButton_1 = $("<input>").attr("name", "testButton");
 $("div .col-md-3").append($testLabel_1).append($testButton_1);
-
 $("#42").on("click", function(e) {
-    alert("вызов_1 загруз_к_а");
-    addMyObject(addedObjectData);
-});
+     
+    addMyObject();
+    alert("загруз_к_а");
 
-$("input[name='trty']").on("click", function(e) {
-    alert("вызов_1 ");
-    addMyObject(addedObjectData_2);
-});
+} );
 
-$("div .col-md-3 input[name='local_F']").on("click", function(e) {
-    alert("очистка формы_local_F ");
-    $("div .col-md-3 input[type='file']").prop("disabled", false);
-});
+/*
 // проверяем поддерживает ли браузер file API
 if (window.File && window.FileReader && window.FileList && window.Blob) {
     // если да, то как только страница загрузится
@@ -190,18 +160,22 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             // вешаем обработчик события, срабатывающий при изменении input'а
             $("div .col-md-3 input[type='file']").on("change", onFilesSelect);
             // document.querySelector('input').addEventListener('change', onFilesSelect, false);
-            alert("загрузка обработчика " + "onload");
+            adresDataSourse = "js/data-example.json";
+            alert("загрузка обработчика " + adresDataSourse);
+
+
         }
         // если нет, то предупреждаем, что демо работать не будет
 } else {
     alert("К сожалению ваш браузер не поддерживает file API");
 };
+*/
 ////////////////////////////////////////////////////
 var sim_player;
-var Wdata;
 
-function zapusk(data) {
-    alert("d3 " + "zapusk start");
+
+var data =  function(data) {
+    alert("d3 " + addedObjectData);
 
     d3.select("#exp_name").text(data.basic_info.exp_name);
 
@@ -234,21 +208,18 @@ function zapusk(data) {
     // OCA chart
     var oca_chart = new OCA_Chart(data, d3.select("#oca_svg"));
     oca_chart.initiate();
-    alert("d3 " + "zapusk finish");
+};
+function addMyObject() {
+    alert("загруз_к_а");
+data(addedObjectData);
 
 };
-////////////////////////
-
-////////////////////
-function addMyObject(func_data) {
-    this.data = func_data;
-    Wdata = zapusk(data);
-
-};
-
-/////////////////////////////////////////////////
-/* оригинальная версия функции
+//фальшивый щелчок мышкой, для обновления 
+   
+//////////////////////////////////////////////////
+/*
 var data = d3.json(adresDataSourse, function(error, data) {
+    alert("d3 " + adresDataSourse);
 
     d3.select("#exp_name").text(data.basic_info.exp_name);
 

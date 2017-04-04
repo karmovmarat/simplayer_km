@@ -1,6 +1,6 @@
-{ 
+var objDataJson_2 = { 
   "basic_info": {
-    "exp_name": "F Test Exp Name"
+    "exp_name": "2 Test Exp Name"
   },
   "oc_dictionary": [
     {
@@ -2701,4 +2701,4 @@
       }
     }
   ]
-}
+};
