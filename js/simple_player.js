@@ -91,7 +91,7 @@ Simple_Player.prototype.stop = function() {
 //функ­ция onFilesSelect получения файла с файловой системы из 
 //элемента input type=file
 function onFilesSelect(e) {
-    alert("1_onFilesSelect");
+    console.log("1_onFilesSelect");
     // получаем объект FileList
     var files, //массив элементов (файлов) из FileList
         file, //элемент (файл) из массива files
@@ -159,8 +159,10 @@ var $labelTypeButton = $("<label>").attr("for", "local_F").text("загрузи�
 $("div .col-md-3 form").append($labelTypeButton).append($inputTypeReset);
 
 var addedObjectData_f; //переменная для кнопки (инпут тип)
-var addedObjectData = objDataJson;
 var addedObjectData_2 = objDataJson_2;
+/*
+//третья кнопка внизу под формой
+var addedObjectData = objDataJson;
 var $testLabel_1 = $("<label>").attr("for", "testButton").text("загрузка");
 var $testButton_1 = $("<input>").attr("type",
     "Button").attr("name",
@@ -170,17 +172,18 @@ var $testButton_1 = $("<input>").attr("type",
 $("div .col-md-3").append($testLabel_1).append($testButton_1);
 
 $("#42").on("click", function(e) {
-    alert("вызов_1 загруз_к_а");
+    console.log("вызов_1 загруз_к_а");
     addMyObject(addedObjectData);
 });
-
+*/
+////////////////////////////////////////////
 $("input[name='trty']").on("click", function(e) {
-    alert("вызов_1 ");
+    console.log("вызов_1 ");
     addMyObject(addedObjectData_2);
 });
 
 $("div .col-md-3 input[name='local_F']").on("click", function(e) {
-    alert("очистка формы_local_F ");
+    console.log("очистка формы_local_F ");
     $("div .col-md-3 input[type='file']").prop("disabled", false);
 });
 // проверяем поддерживает ли браузер file API
@@ -190,7 +193,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             // вешаем обработчик события, срабатывающий при изменении input'а
             $("div .col-md-3 input[type='file']").on("change", onFilesSelect);
             // document.querySelector('input').addEventListener('change', onFilesSelect, false);
-            alert("загрузка обработчика " + "onload");
+            console.log("загрузка обработчика " + "onload");
         }
         // если нет, то предупреждаем, что демо работать не будет
 } else {
@@ -201,7 +204,7 @@ var sim_player;
 var Wdata;
 
 function zapusk(data) {
-    alert("d3 " + "zapusk start");
+    console.log("d3 " + "zapusk start");
 
     d3.select("#exp_name").text(data.basic_info.exp_name);
 
@@ -234,7 +237,7 @@ function zapusk(data) {
     // OCA chart
     var oca_chart = new OCA_Chart(data, d3.select("#oca_svg"));
     oca_chart.initiate();
-    alert("d3 " + "zapusk finish");
+    console.log("d3 " + "zapusk finish");
 
 };
 ////////////////////////
