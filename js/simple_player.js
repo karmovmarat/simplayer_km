@@ -149,12 +149,12 @@ var $inputTypeFile;
 $inputTypeFile = $("<input>").attr("type", "file").attr("accept", "application/json");
 //присоединим к форме inputTypeFile
 $("div .col-md-3 form").append($inputTypeFile);
-//добавим кнопку reset
+//добавим кнопку reset и ее лэйбл
 var $inputTypeReset;
 $inputTypeReset = $("<input>").attr("type", "reset").attr("name",
     "local_F").attr("value", "CLEAR").attr("id", "formILReset");
 var $labelTypeButton;
-var $labelTypeButton = $("<label>").attr("for", "local_F").text("загрузить файл   ");
+var $labelTypeButton = $("<label>").attr("for", "local_F").text("очистить файл  . ");
 //присоединим к форме labelTypeButton и кнопку inputTypeReset
 $("div .col-md-3 form").append($labelTypeButton).append($inputTypeReset);
 
